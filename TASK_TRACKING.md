@@ -1,0 +1,500 @@
+# AI-Powered Social Learning Platform - Task Tracking
+
+**Version:** 1.0
+**Date:** April 30, 2025
+**Project:** AI-Powered Social Learning Platform (Vietnam)
+
+This document tracks the development progress of the AI-Powered Social Learning Platform MVP based on the Detailed Technical Specification (v0.1) and High-Level Plan (v1.0). It follows the Claude Task Master methodology for comprehensive task tracking with logical checkpoints involving human-in-the-loop for continuous planning, developing, and checking.
+
+## Project Overview
+
+The AI-Powered Social Learning Platform is a novel platform tailored for the Vietnamese market, initially focusing on English language learning (specifically IELTS preparation). It addresses the fragmentation and inconsistent quality of existing online learning resources by providing a unified environment where students can access AI-driven interactive learning tools ("mini-apps"), track their progress systematically, and eventually connect within a supportive community.
+
+## Development Methodology
+
+We are following the Claude Task Master methodology for task management:
+
+1. **Task Breakdown:** Breaking down development work into granular phases, tasks, and sub-tasks
+2. **Task Status Tracking:** Maintaining detailed status for each task (To Do, In Progress, Blocked, Needs Review, Done)
+3. **Human-in-the-Loop Validation:** Identifying checkpoints that require human review and validation
+4. **Continuous Documentation:** Updating this document with progress, decisions, and references to code changes
+
+## Phase 1: Project Setup and Basic Configuration
+
+### Task 1.1: Create Task Tracking Document
+- **Status:** Completed
+- **Description:** Create a comprehensive task tracking document to guide the development process
+- **Files Created/Modified:**
+  - `TASK_TRACKING.md`
+- **Notes:** This document will be continuously updated throughout the development process
+
+### Task 1.2: Initialize Next.js 15+ Project
+- **Status:** To Do
+- **Description:** Create a new Next.js 15+ project with TypeScript, Tailwind CSS, and App Router
+- **Sub-tasks:**
+  - [ ] Create new Next.js project with TypeScript
+  - [ ] Configure Tailwind CSS
+  - [ ] Set up ESLint and Prettier
+  - [ ] Configure basic project structure
+- **Files to Create/Modify:**
+  - `package.json`
+  - `tsconfig.json`
+  - `next.config.ts`
+  - `tailwind.config.ts`
+  - `.eslintrc.js`
+  - `.prettierrc.json`
+  - `.gitignore`
+  - `src/app/layout.tsx`
+  - `src/app/page.tsx`
+  - `src/app/globals.css`
+- **Human Validation Point:** ✓ Confirm Next.js project is properly set up and runs without errors
+- **Acceptance Criteria:**
+  - Next.js 15+ project is created with TypeScript
+  - Tailwind CSS is configured
+  - ESLint and Prettier are configured
+  - Basic project structure is set up
+  - Project runs without errors
+
+### Task 1.3: Set Up Git Repository
+- **Status:** In Progress
+- **Description:** Initialize Git repository and make initial commit
+- **Sub-tasks:**
+  - [x] Initialize Git repository with main branch
+  - [x] Create `.gitignore` file
+  - [ ] Make initial commit
+  - [ ] Connect to GitHub repository
+- **Files Created/Modified:**
+  - `.gitignore`
+- **Human Validation Point:** ✓ Confirm Git repository is properly set up and connected to GitHub
+- **Acceptance Criteria:**
+  - Git repository is initialized
+  - `.gitignore` file is created with appropriate entries
+  - Initial commit is made
+  - Repository is connected to GitHub
+
+### Task 1.4: Configure Core Dependencies
+- **Status:** To Do
+- **Description:** Install and configure core dependencies for the project
+- **Sub-tasks:**
+  - [ ] Install Material UI (MUI) and related dependencies
+  - [ ] Install Redux Toolkit and React-Redux
+  - [ ] Install Supabase client
+  - [ ] Install Google Genai SDK (latest version)
+  - [ ] Install next-international for i18n
+  - [ ] Install Zod for schema validation
+  - [ ] Install TipTap for rich text editing
+  - [ ] Install testing libraries (Jest, React Testing Library, Playwright)
+- **Files to Create/Modify:**
+  - `package.json` (dependencies)
+  - `src/utils/supabase.ts`
+  - `src/utils/gemini.ts`
+  - `src/configs/i18n.ts`
+  - `src/redux-store/index.ts`
+- **Human Validation Point:** ✓ Confirm all dependencies are properly installed and compatible
+- **Acceptance Criteria:**
+  - All core dependencies are installed without conflicts
+  - Package versions are compatible with each other
+  - No critical security vulnerabilities in dependencies
+
+### Task 1.5: Set Up Project Structure
+- **Status:** To Do
+- **Description:** Create the complete directory structure as specified in the technical specification
+- **Sub-tasks:**
+  - [ ] Create directory structure for app router
+  - [ ] Create directory structure for layouts
+  - [ ] Create directory structure for components
+  - [ ] Create directory structure for API routes
+  - [ ] Create directory structure for utilities and configurations
+  - [ ] Copy and adapt necessary components from Materio UI demo
+- **Files to Create/Modify:**
+  - `src/app/(blank-layout)/layout.tsx`
+  - `src/app/(dashboard)/layout.tsx`
+  - `src/@core/` (copy from Materio)
+  - `src/@layouts/` (copy from Materio)
+  - `src/@menu/` (copy from Materio)
+  - `src/components/` (copy from Materio)
+  - `src/configs/` (copy from Materio)
+  - `src/contexts/` (copy from Materio)
+- **Human Validation Point:** ✓ Confirm directory structure matches the technical specification
+- **Acceptance Criteria:**
+  - Directory structure is created as specified in the technical specification
+  - All necessary directories are created with placeholder files where appropriate
+  - Necessary components are copied and adapted from Materio UI demo
+
+## Phase 2: Authentication and User Profile
+
+### Task 2.1: Implement Supabase Authentication
+- **Status:** To Do
+- **Description:** Implement user authentication using Supabase Auth
+- **Sub-tasks:**
+  - [ ] Create AuthContext for managing authentication state
+  - [ ] Implement login page
+  - [ ] Implement registration page
+  - [ ] Implement logout functionality
+  - [ ] Set up authentication routes and redirects
+- **Files to Create/Modify:**
+  - `src/contexts/AuthContext.tsx`
+  - `src/app/(blank-layout)/pages/login/page.tsx`
+  - `src/app/(blank-layout)/pages/register/page.tsx`
+  - `src/components/layout/shared/UserDropdown.tsx`
+- **Acceptance Criteria:**
+  - Users can register with email and password
+  - Users can log in with email and password
+  - Users can log out
+  - Authentication state is managed globally
+  - Appropriate redirects are in place
+
+### Task 2.2: Implement User Profile Management
+- **Status:** To Do
+- **Description:** Implement user profile management functionality
+- **Sub-tasks:**
+  - [ ] Create user profile Redux slice
+  - [ ] Implement account settings page
+  - [ ] Implement profile update functionality
+  - [ ] Implement API key management
+  - [ ] Set up avatar upload with Supabase Storage
+- **Files to Create/Modify:**
+  - `src/redux-store/slices/userProfileSlice.ts`
+  - `src/app/(dashboard)/pages/account-settings/page.tsx`
+  - `src/api/users/[...].ts`
+- **Acceptance Criteria:**
+  - Users can view and update their profile information
+  - Users can upload and update their avatar
+  - Users can add, view, and update their Gemini API key
+  - Profile data is stored in Supabase and managed via Redux
+
+## Phase 3: Core Infrastructure and Navigation
+
+### Task 3.1: Implement Navigation and Layouts
+- **Status:** To Do
+- **Description:** Implement navigation and layouts for the application
+- **Sub-tasks:**
+  - [ ] Set up vertical navigation
+  - [ ] Implement dashboard layout
+  - [ ] Configure navigation items
+  - [ ] Implement responsive design
+- **Files to Create/Modify:**
+  - `src/configs/navigation/vertical/index.ts`
+  - `src/@menu/vertical-menu/index.tsx`
+  - `src/app/(dashboard)/layout.tsx`
+- **Acceptance Criteria:**
+  - Navigation is implemented and working
+  - Dashboard layout is implemented
+  - Navigation items are configured
+  - Design is responsive
+
+### Task 3.2: Implement i18n for Vietnamese UI
+- **Status:** To Do
+- **Description:** Implement internationalization for Vietnamese UI
+- **Sub-tasks:**
+  - [ ] Set up i18n configuration
+  - [ ] Create Vietnamese translation files
+  - [ ] Implement language switching (if needed)
+- **Files to Create/Modify:**
+  - `src/configs/i18n.ts`
+  - `src/data/dictionaries/vi.json`
+  - `src/data/dictionaries/en.json`
+- **Acceptance Criteria:**
+  - i18n is configured and working
+  - Vietnamese translations are available
+  - UI text is displayed in Vietnamese
+
+### Task 3.3: Set Up Supabase Database Schema
+- **Status:** To Do
+- **Description:** Set up Supabase database schema for the application
+- **Sub-tasks:**
+  - [ ] Create database tables
+  - [ ] Set up relationships
+  - [ ] Configure Row Level Security (RLS) policies
+  - [ ] Create database triggers and functions
+- **Files to Create/Modify:**
+  - `supabase/migrations/`
+- **Acceptance Criteria:**
+  - Database schema is set up according to the specification
+  - Relationships are properly configured
+  - RLS policies are in place
+  - Triggers and functions are working
+
+## Phase 4: AI Mini-App: IELTS Writing Tools
+
+### Task 4.1: Implement Writing Tools UI
+- **Status:** To Do
+- **Description:** Implement the UI for the IELTS Writing Tools mini-app
+- **Sub-tasks:**
+  - [ ] Create writing tools page
+  - [ ] Implement task type selection
+  - [ ] Integrate Tiptap editor
+  - [ ] Implement word count functionality
+  - [ ] Design feedback display
+- **Files to Create/Modify:**
+  - `src/app/(dashboard)/writing-tools/page.tsx`
+  - `src/app/(dashboard)/writing-tools/components/`
+- **Acceptance Criteria:**
+  - Writing tools page is created
+  - Task type selection is implemented
+  - Tiptap editor is integrated
+  - Word count functionality is working
+  - Feedback display is designed
+
+### Task 4.2: Implement Writing Tools API
+- **Status:** To Do
+- **Description:** Implement the API endpoints for the IELTS Writing Tools mini-app
+- **Sub-tasks:**
+  - [ ] Implement prompt generation endpoint
+  - [ ] Implement essay analysis endpoint
+  - [ ] Set up Gemini API integration
+  - [ ] Implement result saving to database
+- **Files to Create/Modify:**
+  - `src/app/api/mini-apps/writing-tools/generate-prompt/route.ts`
+  - `src/app/api/mini-apps/writing-tools/analyze-essay/route.ts`
+- **Acceptance Criteria:**
+  - Prompt generation endpoint is implemented
+  - Essay analysis endpoint is implemented
+  - Gemini API integration is working
+  - Results are saved to the database
+
+### Task 4.3: Implement Writing Tools State Management
+- **Status:** To Do
+- **Description:** Implement state management for the IELTS Writing Tools mini-app
+- **Sub-tasks:**
+  - [ ] Create writing tools Redux slice
+  - [ ] Implement API integration with Redux
+  - [ ] Handle loading and error states
+- **Files to Create/Modify:**
+  - `src/redux-store/slices/writingToolSlice.ts`
+- **Acceptance Criteria:**
+  - Writing tools Redux slice is created
+  - API integration with Redux is implemented
+  - Loading and error states are handled
+
+## Phase 5: AI Mini-App: IELTS Adaptive Test
+
+### Task 5.1: Implement Adaptive Test UI
+- **Status:** To Do
+- **Description:** Implement the UI for the IELTS Adaptive Test mini-app
+- **Sub-tasks:**
+  - [ ] Create adaptive test page
+  - [ ] Implement question renderer
+  - [ ] Design answer input components
+  - [ ] Implement feedback display
+  - [ ] Design summary report
+- **Files to Create/Modify:**
+  - `src/app/(dashboard)/new-ielts-adaptive/page.tsx`
+  - `src/app/(dashboard)/new-ielts-adaptive/components/`
+- **Acceptance Criteria:**
+  - Adaptive test page is created
+  - Question renderer is implemented
+  - Answer input components are designed
+  - Feedback display is implemented
+  - Summary report is designed
+
+### Task 5.2: Implement Adaptive Test API
+- **Status:** To Do
+- **Description:** Implement the API endpoints for the IELTS Adaptive Test mini-app
+- **Sub-tasks:**
+  - [ ] Implement session start endpoint
+  - [ ] Implement get next question endpoint
+  - [ ] Implement submit answer endpoint
+  - [ ] Set up Gemini API integration
+  - [ ] Implement result saving to database
+- **Files to Create/Modify:**
+  - `src/app/api/mini-apps/adaptive-test/start-session/route.ts`
+  - `src/app/api/mini-apps/adaptive-test/get-next-question/route.ts`
+  - `src/app/api/mini-apps/adaptive-test/submit-answer/route.ts`
+- **Acceptance Criteria:**
+  - Session start endpoint is implemented
+  - Get next question endpoint is implemented
+  - Submit answer endpoint is implemented
+  - Gemini API integration is working
+  - Results are saved to the database
+
+### Task 5.3: Implement Adaptive Test State Management
+- **Status:** To Do
+- **Description:** Implement state management for the IELTS Adaptive Test mini-app
+- **Sub-tasks:**
+  - [ ] Create adaptive test Redux slice
+  - [ ] Implement API integration with Redux
+  - [ ] Handle loading and error states
+- **Files to Create/Modify:**
+  - `src/redux-store/slices/adaptiveTestSlice.ts`
+- **Acceptance Criteria:**
+  - Adaptive test Redux slice is created
+  - API integration with Redux is implemented
+  - Loading and error states are handled
+
+## Phase 6: AI Chatbots
+
+### Task 6.1: Implement AI Tutor Chat
+- **Status:** To Do
+- **Description:** Implement the AI Tutor chat interface
+- **Sub-tasks:**
+  - [ ] Create chat page
+  - [ ] Implement chat UI
+  - [ ] Set up message input and display
+  - [ ] Implement chat history
+- **Files to Create/Modify:**
+  - `src/app/(dashboard)/chat/page.tsx`
+  - `src/app/(dashboard)/chat/components/`
+- **Acceptance Criteria:**
+  - Chat page is created
+  - Chat UI is implemented
+  - Message input and display are working
+  - Chat history is implemented
+
+### Task 6.2: Implement Contextual Help
+- **Status:** To Do
+- **Description:** Implement contextual help functionality
+- **Sub-tasks:**
+  - [ ] Create contextual help component
+  - [ ] Implement help icon placement
+  - [ ] Set up pop-up chat interface
+  - [ ] Implement context passing
+- **Files to Create/Modify:**
+  - `src/components/ContextualHelpPopover.tsx`
+- **Acceptance Criteria:**
+  - Contextual help component is created
+  - Help icon placement is implemented
+  - Pop-up chat interface is working
+  - Context passing is implemented
+
+### Task 6.3: Implement AI Chat API
+- **Status:** To Do
+- **Description:** Implement the API endpoints for AI chat functionality
+- **Sub-tasks:**
+  - [ ] Implement tutor chat endpoint
+  - [ ] Implement contextual help endpoint
+  - [ ] Set up Gemini API integration
+- **Files to Create/Modify:**
+  - `src/app/api/ai/tutor/route.ts`
+  - `src/app/api/ai/contextual-help/route.ts`
+- **Acceptance Criteria:**
+  - Tutor chat endpoint is implemented
+  - Contextual help endpoint is implemented
+  - Gemini API integration is working
+
+## Phase 7: Basic Admin Dashboard
+
+### Task 7.1: Implement User Management
+- **Status:** To Do
+- **Description:** Implement user management functionality for administrators
+- **Sub-tasks:**
+  - [ ] Create user list page
+  - [ ] Implement user detail view
+  - [ ] Set up user status management
+  - [ ] Implement role assignment
+- **Files to Create/Modify:**
+  - `src/app/(dashboard)/admin/users/list/page.tsx`
+  - `src/app/(dashboard)/admin/users/view/[userId]/page.tsx`
+- **Acceptance Criteria:**
+  - User list page is created
+  - User detail view is implemented
+  - User status management is working
+  - Role assignment is implemented
+
+### Task 7.2: Implement Usage Statistics
+- **Status:** To Do
+- **Description:** Implement usage statistics display for administrators
+- **Sub-tasks:**
+  - [ ] Create stats page
+  - [ ] Implement data visualization
+  - [ ] Set up data fetching
+- **Files to Create/Modify:**
+  - `src/app/(dashboard)/admin/stats/page.tsx`
+- **Acceptance Criteria:**
+  - Stats page is created
+  - Data visualization is implemented
+  - Data fetching is working
+
+### Task 7.3: Implement Content Management
+- **Status:** To Do
+- **Description:** Implement content management for AI tools
+- **Sub-tasks:**
+  - [ ] Create content management page
+  - [ ] Implement prompt editing
+  - [ ] Set up configuration management
+- **Files to Create/Modify:**
+  - `src/app/(dashboard)/admin/content-management/page.tsx`
+- **Acceptance Criteria:**
+  - Content management page is created
+  - Prompt editing is implemented
+  - Configuration management is working
+
+## Phase 8: Testing and Deployment
+
+### Task 8.1: Set Up Automated Testing
+- **Status:** To Do
+- **Description:** Set up automated testing for the application
+- **Sub-tasks:**
+  - [ ] Configure Jest/Vitest
+  - [ ] Set up React Testing Library
+  - [ ] Configure Playwright/Cypress
+  - [ ] Write unit tests
+  - [ ] Write integration tests
+  - [ ] Write E2E tests
+- **Files to Create/Modify:**
+  - `jest.config.js` or `vitest.config.js`
+  - `playwright.config.js` or `cypress.config.js`
+  - `__tests__/` directory
+- **Acceptance Criteria:**
+  - Testing frameworks are configured
+  - Unit tests are written
+  - Integration tests are written
+  - E2E tests are written
+  - Tests are passing
+
+### Task 8.2: Set Up Deployment
+- **Status:** To Do
+- **Description:** Set up deployment for the application
+- **Sub-tasks:**
+  - [ ] Configure Vercel project
+  - [ ] Set up environment variables
+  - [ ] Configure CI/CD pipeline
+  - [ ] Deploy to staging environment
+- **Files to Create/Modify:**
+  - `vercel.json`
+- **Acceptance Criteria:**
+  - Vercel project is configured
+  - Environment variables are set up
+  - CI/CD pipeline is configured
+  - Application is deployed to staging environment
+
+### Task 8.3: Final Testing and Bug Fixes
+- **Status:** To Do
+- **Description:** Perform final testing and fix any bugs
+- **Sub-tasks:**
+  - [ ] Perform manual testing
+  - [ ] Fix identified bugs
+  - [ ] Verify all acceptance criteria
+- **Acceptance Criteria:**
+  - All features are working as expected
+  - No critical bugs are present
+  - All acceptance criteria are met
+
+## Current Status Summary
+
+- **Phase 1:** In Progress (Task 1.3 in progress)
+- **Phase 2:** Not Started
+- **Phase 3:** Not Started
+- **Phase 4:** Not Started
+- **Phase 5:** Not Started
+- **Phase 6:** Not Started
+- **Phase 7:** Not Started
+- **Phase 8:** Not Started
+
+## Next Steps
+
+1. Complete Task 1.3: Set Up Git Repository
+2. Proceed with Task 1.2: Initialize Next.js 15+ Project
+
+## Human-in-the-Loop Validation Points
+
+- [ ] ✓ Confirm Git repository is properly set up and connected to GitHub
+- [ ] ✓ Confirm Next.js project is properly set up and runs without errors
+- [ ] ✓ Confirm all dependencies are properly installed and compatible
+- [ ] ✓ Confirm directory structure matches the technical specification
+
+## Decision Log
+
+| Date | Decision | Rationale | Impact |
+|------|----------|-----------|--------|
+| April 30, 2025 | Initialize Git repository with main branch | Standard practice for new projects | Enables version control and collaboration |
