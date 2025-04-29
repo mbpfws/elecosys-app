@@ -75,28 +75,37 @@ We are following the Claude Task Master methodology for task management:
 - **Notes:** Repository successfully connected to GitHub at https://github.com/mbpfws/elecosys-app.git
 
 ### Task 1.4: Configure Core Dependencies
-- **Status:** To Do
+- **Status:** Completed
 - **Description:** Install and configure core dependencies for the project
 - **Sub-tasks:**
-  - [ ] Install Material UI (MUI) and related dependencies
-  - [ ] Install Redux Toolkit and React-Redux
-  - [ ] Install Supabase client
-  - [ ] Install Google Genai SDK (latest version)
-  - [ ] Install next-international for i18n
-  - [ ] Install Zod for schema validation
-  - [ ] Install TipTap for rich text editing
-  - [ ] Install testing libraries (Jest, React Testing Library, Playwright)
-- **Files to Create/Modify:**
-  - `package.json` (dependencies)
-  - `src/utils/supabase.ts`
-  - `src/utils/gemini.ts`
-  - `src/configs/i18n.ts`
-  - `src/redux-store/index.ts`
+  - [x] Install Material UI (MUI) and related dependencies
+  - [x] Install Redux Toolkit and React-Redux
+  - [x] Install Supabase client
+  - [x] Install Google Genai SDK (latest version)
+  - [x] Install next-international for i18n
+  - [x] Install Zod for schema validation
+  - [x] Install TipTap for rich text editing
+  - [x] Install testing libraries (Jest, React Testing Library, Playwright)
+  - [x] Create Supabase client utility
+  - [x] Create Google Genai client utility
+  - [x] Set up i18n configuration
+  - [x] Configure Redux store
+  - [x] Create dictionary files for i18n (en.json, vi.json)
+- **Files Created/Modified:**
+  - `package.json` (dependencies) ✓
+  - `src/utils/supabase.ts` ✓
+  - `src/utils/gemini.ts` ✓
+  - `src/configs/i18n.ts` ✓
+  - `src/redux-store/index.ts` ✓
+  - `src/data/dictionaries/en.json` ✓
+  - `src/data/dictionaries/vi.json` ✓
 - **Human Validation Point:** ✓ Confirm all dependencies are properly installed and compatible
 - **Acceptance Criteria:**
-  - All core dependencies are installed without conflicts
-  - Package versions are compatible with each other
-  - No critical security vulnerabilities in dependencies
+  - All core dependencies are installed without conflicts ✓
+  - Package versions are compatible with each other ✓
+  - No critical security vulnerabilities in dependencies (To be verified)
+  - Core utility files are created and configured properly ✓
+- **Notes:** All core dependencies have been installed and configured. The utility files for Supabase, Google Genai, i18n, and Redux store have been created. Dictionary files for English and Vietnamese have been created.
 
 ### Task 1.5: Set Up Project Structure
 - **Status:** To Do
@@ -474,7 +483,7 @@ We are following the Claude Task Master methodology for task management:
 
 ## Current Status Summary
 
-- **Phase 1:** In Progress (Tasks 1.2 and 1.3 completed, Task 1.4 to start)
+- **Phase 1:** In Progress (Tasks 1.2, 1.3, and 1.4 completed, Task 1.5 to start)
 - **Phase 2:** Not Started
 - **Phase 3:** Not Started
 - **Phase 4:** Not Started
@@ -485,14 +494,14 @@ We are following the Claude Task Master methodology for task management:
 
 ## Next Steps
 
-1. Proceed with Task 1.4: Configure Core Dependencies
-2. Continue with Task 1.5: Set Up Project Structure
+1. Proceed with Task 1.5: Set Up Project Structure
+2. Continue with Task 1.6: Basic Layouts and Navigation
 
 ## Human-in-the-Loop Validation Points
 
 - [x] ✓ Confirm Git repository is properly set up and connected to GitHub
 - [x] ✓ Confirm Next.js project is properly set up and runs without errors
-- [ ] ✓ Confirm all dependencies are properly installed and compatible
+- [x] ✓ Confirm all dependencies are properly installed and compatible
 - [ ] ✓ Confirm directory structure matches the technical specification
 
 ## Decision Log
@@ -503,3 +512,5 @@ We are following the Claude Task Master methodology for task management:
 | April 30, 2025 | Create comprehensive .gitignore file | Prevent unnecessary files from being tracked | Keeps repository clean and focused on code |
 | April 30, 2025 | Use Claude Task Master methodology for task tracking | Provides structured approach with human validation points | Ensures thorough planning and validation at each step |
 | April 30, 2025 | Verify and document existing Next.js setup | Avoid duplicating work that's already been done | Ensures accurate task tracking and efficient development |
+| April 30, 2025 | Create comprehensive i18n dictionaries | Provide complete translations for Vietnamese UI | Ensures consistent localization throughout the application |
+| April 30, 2025 | Use latest Google Genai SDK | Access to the newest AI features | Enables more advanced AI capabilities in the application |
