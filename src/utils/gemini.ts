@@ -23,7 +23,7 @@ export const createGeminiChat = async (apiKey?: string) => {
 
   // Create a chat instance
   const chat = ai.chats.create({
-    model: 'gemini-2.0-flash-001',
+    model: 'gemini-2.0-flash',
     config: {
       temperature: 0.7,
       topP: 0.8,
@@ -53,7 +53,7 @@ export const generateGeminiContent = async (
   }
 
   // Use the specified model or default to gemini-2.0-flash-001
-  const modelName = options?.model || 'gemini-2.0-flash-001';
+  const modelName = options?.model || 'gemini-2.0-flash';
 
   try {
     const response = await ai.models.generateContent({
@@ -92,8 +92,8 @@ export const generateGeminiContentStream = async (
     throw new Error('Failed to initialize Google Generative AI client');
   }
 
-  // Use the specified model or default to gemini-2.0-flash-001
-  const modelName = options?.model || 'gemini-2.0-flash-001';
+  // Use the specified model or default to gemini-2.0-flash
+  const modelName = options?.model || 'gemini-2.0-flash';
 
   try {
     const response = await ai.models.generateContentStream({
