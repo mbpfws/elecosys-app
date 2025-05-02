@@ -1,36 +1,16 @@
 'use client'
 
-// Third-party Imports
-import classnames from 'classnames'
+import { ReactNode } from 'react'
 
-// Type Imports
-import type { ChildrenType, SystemMode } from '@core/types'
+// Layout Import
+import BlankLayout from '@layouts/BlankLayout'
 
-// Hook Imports
-import { useSettings } from '@core/hooks/useSettings'
-import useLayoutInit from '@core/hooks/useLayoutInit'
-
-// Util Imports
-import { blankLayoutClasses } from '@layouts/utils/layoutClasses'
-
-type Props = ChildrenType & {
-  systemMode: SystemMode
+interface BlankLayoutWrapperProps {
+  children: ReactNode
 }
 
-const BlankLayout = (props: Props) => {
-  // Props
-  const { children, systemMode } = props
-
-  // Hooks
-  const { settings } = useSettings()
-
-  useLayoutInit(systemMode)
-
-  return (
-    <div className={classnames(blankLayoutClasses.root, 'is-full bs-full')} data-skin={settings.skin}>
-      {children}
-    </div>
-  )
+const BlankLayoutWrapper = ({ children }: BlankLayoutWrapperProps) => {
+  return <BlankLayout>{children}</BlankLayout>
 }
 
-export default BlankLayout
+export default BlankLayoutWrapper
