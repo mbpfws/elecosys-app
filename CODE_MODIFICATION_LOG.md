@@ -56,3 +56,36 @@ Updated dependencies to latest compatible versions:
 - Zod: https://www.npmjs.com/package/zod
 - Playwright: https://www.npmjs.com/package/@playwright/test
 - React Testing Library: https://www.npmjs.com/package/@testing-library/react
+
+## May 2, 2025
+
+### Internationalization (i18n) Implementation
+
+#### Files Created/Modified
+- src/utils/i18n.ts - Custom hook for using i18n in components
+- src/configs/i18n.ts - Updated i18n configuration with client-side translation
+- src/components/LanguageSwitcher.tsx - Language switcher component
+- src/@layouts/VerticalLayout/index.tsx - Updated to use i18n
+- src/@menu/vertical-menu/index.tsx - Updated to use i18n
+- src/app/pages/login/page.tsx - Updated to use i18n
+- src/app/pages/login/layout.tsx - Simplified login page layout
+- src/app/layout.tsx - Updated root layout
+- src/app/page.tsx - Updated root page
+- src/middleware.ts - Added placeholder middleware
+
+#### Implementation Details
+- Created a client-side i18n implementation using dictionary files
+- Added a language switcher component to toggle between English and Vietnamese
+- Updated all components to use the i18n translation function
+- Implemented proper loading of dictionary files based on selected language
+- Ensured all user-facing text is localized according to the technical specification
+
+#### Research Notes
+- Explored different approaches to i18n in Next.js 15 with App Router
+- Decided on a client-side approach for simplicity and compatibility
+- Ensured the implementation follows the requirements in the technical specification
+- Verified that both English and Vietnamese languages are supported
+
+#### References
+- Next.js Internationalization: https://nextjs.org/docs/app/building-your-application/routing/internationalization
+- Next-international: https://github.com/QuiiBz/next-international
