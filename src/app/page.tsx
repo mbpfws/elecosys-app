@@ -1,6 +1,36 @@
-import { redirect } from 'next/navigation';
-import { defaultLocale } from '@/configs/i18n';
+'use client'
 
-export default function Page() {
-  redirect(`/${defaultLocale}`);
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { CircularProgress, Box, Typography } from '@mui/material'
+import { useTranslation } from '@/utils/i18n'
+
+export default function Home() {
+  const router = useRouter()
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    // In a real app, we would check if the user is authenticated
+    // For now, we'll redirect to the login page
+    // Later, we'll implement authentication and redirect to dashboard if authenticated
+    router.push('/pages/login')
+  }, [router])
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        gap: 2
+      }}
+    >
+      <CircularProgress size={60} />
+      <Typography variant="h6">
+        {t('common.loading')}
+      </Typography>
+    </Box>
+  )
 }

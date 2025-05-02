@@ -10,27 +10,48 @@ export const localeNames = {
   vi: 'Tiếng Việt',
 };
 
-// Dictionary loader
-export async function getDictionary(locale: string) {
-  return (await import(`../data/dictionaries/${locale}.json`)).default;
+// Dictionary cache
+let dictionaries: Record<string, any> = {};
+
+// Load dictionary
+export async function loadDictionary(locale: string) {
+  if (!dictionaries[locale]) {
+    try {
+      const dictionary = await import(`../data/dictionaries/${locale}.json`);
+      dictionaries[locale] = dictionary.default;
+    } catch (error) {
+      console.error(`Error loading dictionary for locale ${locale}:`, error);
+      dictionaries[locale] = {};
+    }
+  }
+  return dictionaries[locale];
 }
 
-// I18n Provider (client-side)
+// Simple i18n provider (no-op for now)
 export function I18nProvider({ locale, children }: { locale: string; children: React.ReactNode }) {
   return children;
 }
 
-// Hooks for client-side i18n
-export function useI18n() {
-  return (key: string) => key;
-}
+// Client-side translation function
+export function useTranslation(locale = defaultLocale) {
+  // Translation function
+  const t = (key: string): string => {
+    // Split the key by dots to access nested properties
+    const keys = key.split('.');
+    let value: any = dictionaries[locale] || {};
 
-export function useCurrentLocale() {
-  return 'en';
-}
+    // Traverse the dictionary object
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = value[k];
+      } else {
+        // Return the key if the translation is not found
+        return key;
+      }
+    }
 
-export function useChangeLocale() {
-  return (locale: string) => {
-    window.location.pathname = window.location.pathname.replace(/^\/[^\/]+/, `/${locale}`);
+    return typeof value === 'string' ? value : key;
   };
+
+  return { t, locale };
 }

@@ -1,11 +1,31 @@
 // Import the i18n functions from configs
-import { useI18n, useCurrentLocale, useChangeLocale } from '@/configs/i18n';
+import { useTranslation as useI18n, defaultLocale, loadDictionary } from '@/configs/i18n';
+import { useEffect, useState } from 'react';
+
+// Load dictionaries for both locales
+loadDictionary('en');
+loadDictionary('vi');
 
 // Export a custom hook to use i18n in components
 export const useTranslation = () => {
-  const t = useI18n();
-  const currentLocale = useCurrentLocale();
-  const changeLocale = useChangeLocale();
+  const [locale, setLocale] = useState(defaultLocale);
+  const { t } = useI18n(locale);
 
-  return { t, currentLocale, changeLocale };
+  // Function to change locale
+  const changeLocale = (newLocale: string) => {
+    setLocale(newLocale);
+    // Load dictionary if needed
+    loadDictionary(newLocale);
+  };
+
+  // Load dictionary on mount
+  useEffect(() => {
+    loadDictionary(locale);
+  }, [locale]);
+
+  return {
+    t,
+    currentLocale: locale,
+    changeLocale
+  };
 };
