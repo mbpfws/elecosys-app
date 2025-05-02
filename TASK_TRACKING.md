@@ -154,6 +154,7 @@ We are following the Claude Task Master methodology for task management:
   - [x] Implement responsive design
   - [x] Fix MUI integration with Next.js App Router
   - [x] Ensure proper theme configuration
+  - [x] Implement internationalization (i18n) with language switcher
 - **Files Created/Modified:**
   - `src/app/(blank-layout)/layout.tsx`
   - `src/app/(dashboard)/layout.tsx`
@@ -175,6 +176,8 @@ We are following the Claude Task Master methodology for task management:
   - `src/@menu/vertical-menu/index.tsx`
   - `src/configs/themeConfig.ts`
   - `src/configs/navigation/vertical/index.ts`
+  - `src/utils/i18n.ts`
+  - `src/components/LanguageSwitcher.tsx`
   - `tsconfig.json`
 - **Human Validation Point:** ✓ Confirm layouts and navigation are working properly
 - **Acceptance Criteria:**
@@ -184,7 +187,8 @@ We are following the Claude Task Master methodology for task management:
   - ✓ Design is responsive
   - ✓ MUI is properly integrated with Next.js App Router
   - ✓ Theme is properly configured
-- **Notes:** Implemented the basic layouts and navigation for the application following the Materio UI structure. Created the proper directory structure with `@core`, `@layouts`, and `@menu` directories. Copied and adapted the necessary components from Materio, including the theme configuration, layout components, and navigation components. Fixed the MUI integration with Next.js App Router by implementing the proper emotion cache provider. Updated the tsconfig.json to add path aliases for the new directories.
+  - ✓ Internationalization (i18n) is implemented with both English and Vietnamese support
+- **Notes:** Implemented the basic layouts and navigation for the application following the Materio UI structure. Created the proper directory structure with `@core`, `@layouts`, and `@menu` directories. Copied and adapted the necessary components from Materio, including the theme configuration, layout components, and navigation components. Fixed the MUI integration with Next.js App Router by implementing the proper emotion cache provider. Updated the tsconfig.json to add path aliases for the new directories. Implemented internationalization (i18n) with a language switcher component to support both English and Vietnamese languages.
 
 ## Phase 2: Authentication and User Profile
 

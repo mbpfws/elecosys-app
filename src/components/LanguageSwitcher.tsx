@@ -1,18 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Button, Menu, MenuItem } from '@mui/material'
 import LanguageIcon from '@mui/icons-material/Language'
 import { useTranslation } from '@/utils/i18n'
-import { useCurrentLocale, useChangeLocale } from '@/configs/i18n'
 
 const LanguageSwitcher = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const router = useRouter()
-  const { t } = useTranslation()
-  const currentLocale = useCurrentLocale()
-  const changeLocale = useChangeLocale()
+  const { t, currentLocale, changeLocale } = useTranslation()
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
@@ -42,13 +37,13 @@ const LanguageSwitcher = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem 
+        <MenuItem
           onClick={() => handleLanguageChange('en')}
           selected={currentLocale === 'en'}
         >
           English
         </MenuItem>
-        <MenuItem 
+        <MenuItem
           onClick={() => handleLanguageChange('vi')}
           selected={currentLocale === 'vi'}
         >

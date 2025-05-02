@@ -14,6 +14,9 @@ import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ReactNode, useState } from 'react';
 
+// i18n Provider Import
+import { I18nProvider } from '@/configs/i18n';
+
 const inter = Inter({
   subsets: ["latin"],
   display: 'swap',
