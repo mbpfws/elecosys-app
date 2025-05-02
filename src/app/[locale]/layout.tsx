@@ -72,13 +72,15 @@ export default function LocaleLayout({
   params: { locale: string };
 }) {
   return (
-    <I18nProvider locale={locale}>
-      <EmotionCacheProvider>
-        <CustomThemeProvider systemMode="light">
-          <CssBaseline />
-          {children}
-        </CustomThemeProvider>
-      </EmotionCacheProvider>
-    </I18nProvider>
+    <html lang={locale}>
+      <body className={inter.className}>
+        <EmotionCacheProvider>
+          <CustomThemeProvider systemMode="light">
+            <CssBaseline />
+            {children}
+          </CustomThemeProvider>
+        </EmotionCacheProvider>
+      </body>
+    </html>
   );
 }
