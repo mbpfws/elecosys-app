@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+'use client';
+
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -17,11 +19,6 @@ const inter = Inter({
   display: 'swap',
   variable: '--font-inter',
 });
-
-export const metadata: Metadata = {
-  title: "AI-Powered Social Learning Platform",
-  description: "IELTS preparation platform with AI-powered tools",
-};
 
 function EmotionCacheProvider({ children }: { children: ReactNode }) {
   const [{ cache, flush }] = useState(() => {
