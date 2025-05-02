@@ -23,20 +23,20 @@ This document serves as a development diary to maintain context between developm
 #### Challenges and Solutions
 - **Challenge:** Initial approach using Next.js App Router internationalization with locale in URL path was causing routing conflicts
   - **Solution:** Simplified to client-side approach using dictionary files and localStorage for persistence
-  
+
 - **Challenge:** Language switching was not persisting between page refreshes
   - **Solution:** Implemented localStorage to save language preference and load it on application startup
-  
+
 - **Challenge:** Hydration mismatch between server and client rendering
   - **Solution:** Added client-side only rendering for language switcher component using useEffect and mounted state
 
 #### Decisions
 - **Decision:** Use client-side internationalization instead of server-side
   - **Rationale:** Simplifies implementation while still meeting requirements; avoids complex routing issues
-  
+
 - **Decision:** Store language preference in localStorage
   - **Rationale:** Provides persistence without requiring backend storage; simple and effective approach
-  
+
 - **Decision:** Preload all dictionaries at startup
   - **Rationale:** Only two languages (English and Vietnamese) so bundle size impact is minimal; improves performance when switching languages
 
@@ -50,6 +50,64 @@ This document serves as a development diary to maintain context between developm
 - Proceed to Phase 2: Authentication and User Profile
 - Begin implementing Supabase authentication
 - Ensure all components use the i18n translation function
+
+## May 3, 2025
+
+### Supabase Authentication Implementation
+
+#### Progress
+- Completed implementation of Supabase authentication
+- Created AuthContext for managing authentication state
+- Implemented Redux slice for storing user authentication data
+- Updated login and registration pages with form validation
+- Added error handling and loading states for authentication processes
+- Implemented route protection using middleware
+- Created user dropdown component with logout functionality
+- Updated i18n dictionaries with authentication-related translations
+
+#### Challenges and Solutions
+- **Challenge:** Integrating Supabase Auth with React Context and Redux
+  - **Solution:** Created a comprehensive AuthContext that manages Supabase Auth state and dispatches actions to Redux
+
+- **Challenge:** Form validation with proper error handling
+  - **Solution:** Implemented Zod schemas for form validation with clear error messages and field-level validation
+
+- **Challenge:** Route protection in Next.js App Router
+  - **Solution:** Created a middleware that checks authentication state and redirects accordingly
+
+- **Challenge:** Handling authentication state persistence
+  - **Solution:** Utilized Supabase's built-in session management and connected it with our AuthContext
+
+#### Decisions
+- **Decision:** Use both React Context and Redux for authentication state
+  - **Rationale:** React Context provides a convenient way to access authentication methods, while Redux provides global state management for user data
+
+- **Decision:** Implement form validation using Zod
+  - **Rationale:** Zod provides type-safe validation with clear error messages and integrates well with TypeScript
+
+- **Decision:** Use middleware for route protection
+  - **Rationale:** Middleware provides a centralized way to handle route protection across the application
+
+- **Decision:** Store minimal user data in Redux
+  - **Rationale:** Only store non-sensitive user data in Redux to avoid security issues
+
+#### Code Structure
+- Created `src/contexts/AuthContext.tsx` for authentication state management
+- Created `src/redux-store/slices/authSlice.ts` for Redux state management
+- Updated `src/redux-store/index.ts` to include auth reducer
+- Created `src/redux-store/ReduxProvider.tsx` for Redux provider
+- Updated `src/app/pages/login/page.tsx` and `src/app/(blank-layout)/pages/register/page.tsx` with authentication forms
+- Created `src/components/layout/shared/UserDropdown.tsx` for user dropdown with logout functionality
+- Updated `src/middleware.ts` for route protection
+- Updated `src/app/layout.tsx` to include AuthProvider and ReduxProvider
+
+#### Next Steps
+- Proceed to Task 2.2: Implement User Profile Management
+- Create user profile Redux slice
+- Implement account settings page
+- Implement profile update functionality
+- Implement API key management
+- Set up avatar upload with Supabase Storage
 
 ## Project Structure Reference
 

@@ -63,6 +63,12 @@ function EmotionCacheProvider({ children }: { children: ReactNode }) {
   return <CacheProvider value={cache}>{children}</CacheProvider>;
 }
 
+// Redux Provider Import
+import ReduxProvider from '@/redux-store/ReduxProvider';
+
+// Auth Provider Import
+import { AuthProvider } from '@/contexts/AuthContext';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,7 +80,11 @@ export default function RootLayout({
         <EmotionCacheProvider>
           <CustomThemeProvider systemMode="light">
             <CssBaseline />
-            {children}
+            <ReduxProvider>
+              <AuthProvider>
+                {children}
+              </AuthProvider>
+            </ReduxProvider>
           </CustomThemeProvider>
         </EmotionCacheProvider>
       </body>

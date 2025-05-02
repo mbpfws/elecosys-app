@@ -53,6 +53,8 @@
     "rememberMe": "Remember Me",
     "dontHaveAccount": "Don't have an account?",
     "alreadyHaveAccount": "Already have an account?",
+    "haveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
     "createAccount": "Create Account",
     "loginInstead": "Login Instead",
     "forgotPasswordLink": "Forgot Password?",
@@ -65,7 +67,10 @@
     "logoutSuccess": "Logout successful",
     "passwordMismatch": "Passwords do not match",
     "passwordTooShort": "Password must be at least 8 characters",
-    "invalidEmail": "Invalid email address"
+    "invalidEmail": "Invalid email address",
+    "orText": "OR",
+    "login": "Login",
+    "register": "Register"
   },
   "profile": {
     "title": "Profile",

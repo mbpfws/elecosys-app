@@ -89,3 +89,44 @@ Updated dependencies to latest compatible versions:
 #### References
 - Next.js Internationalization: https://nextjs.org/docs/app/building-your-application/routing/internationalization
 - Next-international: https://github.com/QuiiBz/next-international
+
+## May 3, 2025
+
+### Supabase Authentication Implementation
+
+#### Files Created/Modified
+- src/contexts/AuthContext.tsx - Created authentication context provider
+- src/redux-store/slices/authSlice.ts - Created Redux slice for auth state
+- src/redux-store/index.ts - Updated to include auth reducer
+- src/redux-store/ReduxProvider.tsx - Created Redux provider component
+- src/app/pages/login/page.tsx - Updated with Supabase authentication
+- src/app/(blank-layout)/pages/register/page.tsx - Updated with Supabase authentication
+- src/components/layout/shared/UserDropdown.tsx - Created user dropdown with logout functionality
+- src/middleware.ts - Updated for route protection
+- src/app/layout.tsx - Updated to include AuthProvider and ReduxProvider
+- src/data/dictionaries/en.json - Updated with new auth translations
+- src/data/dictionaries/vi.json - Updated with new auth translations
+
+#### Implementation Details
+- Created AuthContext to manage authentication state using Supabase Auth
+- Implemented Redux slice for storing user authentication data
+- Updated login and registration pages with form validation using Zod
+- Added error handling and loading states for authentication processes
+- Implemented route protection using middleware
+- Created user dropdown component with logout functionality
+- Updated i18n dictionaries with authentication-related translations
+- Connected AuthContext with Redux for global state management
+
+#### Research Notes
+- Researched Supabase Auth API for authentication implementation
+- Explored best practices for form validation with Zod
+- Investigated route protection strategies in Next.js App Router
+- Studied the integration of Supabase Auth with React Context API
+- Examined the connection between React Context and Redux for state management
+
+#### References
+- Supabase Auth Documentation: https://supabase.com/docs/reference/javascript/auth-signin
+- Zod Documentation: https://zod.dev/
+- Next.js Middleware: https://nextjs.org/docs/app/building-your-application/routing/middleware
+- Redux Toolkit: https://redux-toolkit.js.org/
+- React Context API: https://react.dev/reference/react/createContext

@@ -1,14 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-// Import reducers here as they are created
+// Import reducers
+import authReducer from './slices/authSlice';
 // import userProfileReducer from './slices/userProfileSlice';
 // import writingToolReducer from './slices/writingToolSlice';
 // import adaptiveTestReducer from './slices/adaptiveTestSlice';
 
 export const store = configureStore({
   reducer: {
-    // Add reducers here as they are created
+    auth: authReducer,
     // userProfile: userProfileReducer,
     // writingTool: writingToolReducer,
     // adaptiveTest: adaptiveTestReducer,
