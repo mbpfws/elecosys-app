@@ -144,6 +144,33 @@ We are following the Claude Task Master methodology for task management:
   - ✓ Necessary components are copied and adapted from Materio UI demo
 - **Notes:** Created the complete directory structure for the app router, layouts, components, and API routes. Implemented placeholder files for all main pages and API routes. Adapted the necessary components from Materio UI demo, including the blank layout, dashboard layout, and navigation configuration.
 
+### Task 1.6: Basic Layouts and Navigation
+- **Status:** In Progress
+- **Description:** Implement basic layouts and navigation for the application
+- **Sub-tasks:**
+  - [ ] Set up blank layout for unauthenticated pages
+  - [ ] Set up dashboard layout for authenticated pages
+  - [ ] Configure navigation items
+  - [ ] Implement responsive design
+  - [ ] Fix MUI integration with Next.js App Router
+  - [ ] Ensure proper theme configuration
+- **Files to Create/Modify:**
+  - `src/app/(blank-layout)/layout.tsx`
+  - `src/app/(dashboard)/layout.tsx`
+  - `src/configs/navigation/vertical/index.ts`
+  - `src/components/theme/ThemeRegistry.tsx`
+  - `src/configs/theme.ts`
+  - `src/app/layout.tsx`
+- **Human Validation Point:** Confirm layouts and navigation are working properly
+- **Acceptance Criteria:**
+  - Blank layout is implemented for unauthenticated pages
+  - Dashboard layout is implemented for authenticated pages
+  - Navigation items are configured and working
+  - Design is responsive
+  - MUI is properly integrated with Next.js App Router
+  - Theme is properly configured
+- **Notes:** This task focuses on implementing the basic layouts and navigation for the application, ensuring that the UI components are properly styled and responsive. It also includes fixing any issues with MUI integration with Next.js App Router.
+
 ## Phase 2: Authentication and User Profile
 
 ### Task 2.1: Implement Supabase Authentication
