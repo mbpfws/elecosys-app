@@ -154,7 +154,6 @@ We are following the Claude Task Master methodology for task management:
   - [x] Implement responsive design
   - [x] Fix MUI integration with Next.js App Router
   - [x] Ensure proper theme configuration
-  - [x] Implement internationalization (i18n) with language switcher
 - **Files Created/Modified:**
   - `src/app/(blank-layout)/layout.tsx`
   - `src/app/(dashboard)/layout.tsx`
@@ -176,8 +175,6 @@ We are following the Claude Task Master methodology for task management:
   - `src/@menu/vertical-menu/index.tsx`
   - `src/configs/themeConfig.ts`
   - `src/configs/navigation/vertical/index.ts`
-  - `src/utils/i18n.ts`
-  - `src/components/LanguageSwitcher.tsx`
   - `tsconfig.json`
 - **Human Validation Point:** ✓ Confirm layouts and navigation are working properly
 - **Acceptance Criteria:**
@@ -187,8 +184,37 @@ We are following the Claude Task Master methodology for task management:
   - ✓ Design is responsive
   - ✓ MUI is properly integrated with Next.js App Router
   - ✓ Theme is properly configured
-  - ✓ Internationalization (i18n) is implemented with both English and Vietnamese support
-- **Notes:** Implemented the basic layouts and navigation for the application following the Materio UI structure. Created the proper directory structure with `@core`, `@layouts`, and `@menu` directories. Copied and adapted the necessary components from Materio, including the theme configuration, layout components, and navigation components. Fixed the MUI integration with Next.js App Router by implementing the proper emotion cache provider. Updated the tsconfig.json to add path aliases for the new directories. Implemented internationalization (i18n) with a language switcher component to support both English and Vietnamese languages.
+- **Notes:** Implemented the basic layouts and navigation for the application following the Materio UI structure. Created the proper directory structure with `@core`, `@layouts`, and `@menu` directories. Copied and adapted the necessary components from Materio, including the theme configuration, layout components, and navigation components. Fixed the MUI integration with Next.js App Router by implementing the proper emotion cache provider. Updated the tsconfig.json to add path aliases for the new directories.
+
+### Task 1.7: Internationalization (i18n)
+- **Status:** Completed
+- **Description:** Implement internationalization (i18n) for Vietnamese UI
+- **Sub-tasks:**
+  - [x] Set up i18n configuration
+  - [x] Create Vietnamese translation files
+  - [x] Implement language switching
+  - [x] Update components to use i18n
+  - [x] Fix language persistence
+- **Files Created/Modified:**
+  - `src/utils/i18n.ts`
+  - `src/configs/i18n.ts`
+  - `src/components/LanguageSwitcher.tsx`
+  - `src/@layouts/VerticalLayout/index.tsx`
+  - `src/@menu/vertical-menu/index.tsx`
+  - `src/app/pages/login/page.tsx`
+  - `src/app/pages/login/layout.tsx`
+  - `src/app/layout.tsx`
+  - `src/app/page.tsx`
+  - `src/data/dictionaries/en.json`
+  - `src/data/dictionaries/vi.json`
+- **Human Validation Point:** ✓ Confirm i18n is working properly with language switching
+- **Acceptance Criteria:**
+  - ✓ i18n is configured and working
+  - ✓ Vietnamese translations are available
+  - ✓ UI text is displayed in Vietnamese when selected
+  - ✓ Language switcher is implemented and working
+  - ✓ Language preference is persisted
+- **Notes:** Implemented a client-side i18n solution using dictionary files for both English and Vietnamese. Created a language switcher component that allows users to toggle between languages. Updated all components to use the i18n translation function. Implemented language persistence using localStorage. Fixed issues with hydration and language switching.
 
 ## Phase 2: Authentication and User Profile
 
@@ -541,7 +567,7 @@ We are following the Claude Task Master methodology for task management:
 
 ## Current Status Summary
 
-- **Phase 1:** Completed (Tasks 1.1, 1.2, 1.3, 1.4, 1.5, and 1.6 completed)
+- **Phase 1:** Completed (Tasks 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, and 1.7 completed)
 - **Phase 2:** Not Started
 - **Phase 3:** Not Started
 - **Phase 4:** Not Started
