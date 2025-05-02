@@ -145,31 +145,46 @@ We are following the Claude Task Master methodology for task management:
 - **Notes:** Created the complete directory structure for the app router, layouts, components, and API routes. Implemented placeholder files for all main pages and API routes. Adapted the necessary components from Materio UI demo, including the blank layout, dashboard layout, and navigation configuration.
 
 ### Task 1.6: Basic Layouts and Navigation
-- **Status:** In Progress
+- **Status:** Completed
 - **Description:** Implement basic layouts and navigation for the application
 - **Sub-tasks:**
-  - [ ] Set up blank layout for unauthenticated pages
-  - [ ] Set up dashboard layout for authenticated pages
-  - [ ] Configure navigation items
-  - [ ] Implement responsive design
-  - [ ] Fix MUI integration with Next.js App Router
-  - [ ] Ensure proper theme configuration
-- **Files to Create/Modify:**
+  - [x] Set up blank layout for unauthenticated pages
+  - [x] Set up dashboard layout for authenticated pages
+  - [x] Configure navigation items
+  - [x] Implement responsive design
+  - [x] Fix MUI integration with Next.js App Router
+  - [x] Ensure proper theme configuration
+- **Files Created/Modified:**
   - `src/app/(blank-layout)/layout.tsx`
   - `src/app/(dashboard)/layout.tsx`
-  - `src/configs/navigation/vertical/index.ts`
-  - `src/components/theme/ThemeRegistry.tsx`
-  - `src/configs/theme.ts`
   - `src/app/layout.tsx`
+  - `src/@core/theme/ThemeProvider.tsx`
+  - `src/@core/theme/breakpoints.ts`
+  - `src/@core/theme/overrides/button.ts`
+  - `src/@core/theme/overrides/card.ts`
+  - `src/@core/theme/overrides/index.ts`
+  - `src/@core/theme/overrides/paper.ts`
+  - `src/@core/theme/overrides/textField.ts`
+  - `src/@core/theme/palette.ts`
+  - `src/@core/theme/shadows.ts`
+  - `src/@core/theme/spacing.ts`
+  - `src/@core/theme/typography.ts`
+  - `src/@core/types/index.ts`
+  - `src/@layouts/BlankLayout/index.tsx`
+  - `src/@layouts/VerticalLayout/index.tsx`
+  - `src/@menu/vertical-menu/index.tsx`
+  - `src/configs/themeConfig.ts`
+  - `src/configs/navigation/vertical/index.ts`
+  - `tsconfig.json`
 - **Human Validation Point:** Confirm layouts and navigation are working properly
 - **Acceptance Criteria:**
-  - Blank layout is implemented for unauthenticated pages
-  - Dashboard layout is implemented for authenticated pages
-  - Navigation items are configured and working
-  - Design is responsive
-  - MUI is properly integrated with Next.js App Router
-  - Theme is properly configured
-- **Notes:** This task focuses on implementing the basic layouts and navigation for the application, ensuring that the UI components are properly styled and responsive. It also includes fixing any issues with MUI integration with Next.js App Router.
+  - ✓ Blank layout is implemented for unauthenticated pages
+  - ✓ Dashboard layout is implemented for authenticated pages
+  - ✓ Navigation items are configured and working
+  - ✓ Design is responsive
+  - ✓ MUI is properly integrated with Next.js App Router
+  - ✓ Theme is properly configured
+- **Notes:** Implemented the basic layouts and navigation for the application following the Materio UI structure. Created the proper directory structure with `@core`, `@layouts`, and `@menu` directories. Copied and adapted the necessary components from Materio, including the theme configuration, layout components, and navigation components. Fixed the MUI integration with Next.js App Router by implementing the proper emotion cache provider. Updated the tsconfig.json to add path aliases for the new directories.
 
 ## Phase 2: Authentication and User Profile
 
