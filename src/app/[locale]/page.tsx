@@ -6,7 +6,7 @@ import Link from 'next/link';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, currentLocale } = useTranslation();
 
   return (
     <Box sx={{ p: 4, textAlign: 'center' }}>
@@ -19,10 +19,10 @@ export default function Home() {
       <Typography variant="body1" paragraph>
         {t('common.loading')}
       </Typography>
-      <Button 
-        component={Link} 
-        href="/pages/login" 
-        variant="contained" 
+      <Button
+        component={Link}
+        href={`/${currentLocale}/pages/login`}
+        variant="contained"
         color="primary"
       >
         {t('common.login')}
