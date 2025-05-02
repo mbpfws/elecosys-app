@@ -23,6 +23,9 @@ import { usePathname } from 'next/navigation'
 // Type Imports
 import type { VerticalNavItemsType, NavLink, NavSectionTitle } from '@core/types'
 
+// i18n Import
+import { useTranslation } from '@/utils/i18n'
+
 interface VerticalNavProps {
   navItems: VerticalNavItemsType
 }
@@ -36,6 +39,7 @@ const VerticalNav = (props: VerticalNavProps) => {
 
   // Hooks
   const pathname = usePathname()
+  const { t } = useTranslation()
 
   // Handlers
   const handleItemClick = (title: string) => {
@@ -100,7 +104,7 @@ const VerticalNav = (props: VerticalNavProps) => {
               }}
             >
               {navLink.icon && <ListItemIcon>{navLink.icon}</ListItemIcon>}
-              <ListItemText primary={navLink.title} />
+              <ListItemText primary={t(`navigation.${navLink.title}`)} />
               {isOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={isOpen} timeout="auto" unmountOnExit>
@@ -129,7 +133,7 @@ const VerticalNav = (props: VerticalNavProps) => {
           }}
         >
           {navLink.icon && <ListItemIcon>{navLink.icon}</ListItemIcon>}
-          <ListItemText primary={navLink.title} />
+          <ListItemText primary={t(`navigation.${navLink.title}`)} />
         </ListItem>
       )
     })

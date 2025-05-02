@@ -20,10 +20,14 @@ import type { SystemMode } from '@core/types'
 
 // Component Imports
 import VerticalNav from '@menu/vertical-menu'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 import navigation from '@configs/navigation/vertical'
+
+// i18n Import
+import { useTranslation } from '@/utils/i18n'
 
 interface VerticalLayoutProps {
   children: ReactNode
@@ -39,6 +43,9 @@ const VerticalLayout = (props: VerticalLayoutProps) => {
   // States
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  // i18n
+  const { t } = useTranslation()
+
   // Handlers
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -51,7 +58,7 @@ const VerticalLayout = (props: VerticalLayoutProps) => {
     <Box>
       <Box sx={{ p: 4 }}>
         <Typography variant="h6" noWrap component="div">
-          IELTS Platform
+          {t('common.appName')}
         </Typography>
       </Box>
       <Divider />
@@ -78,9 +85,10 @@ const VerticalLayout = (props: VerticalLayoutProps) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            AI-Powered Social Learning Platform
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+            {t('common.appName')}
           </Typography>
+          <LanguageSwitcher />
         </Toolbar>
       </AppBar>
       <Box
