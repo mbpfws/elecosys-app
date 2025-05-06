@@ -39,7 +39,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, avatar, r
       elevation={0}
       sx={{
         height: '100%',
-        borderRadius: '12px',
+        borderRadius: '16px',
         position: 'relative',
         overflow: 'visible',
         opacity: isVisible ? 1 : 0,
@@ -47,64 +47,76 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, avatar, r
         transition: 'all 0.6s ease',
         transitionDelay: `${delay}s`,
         border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
-        background: alpha(theme.palette.background.paper, 0.5),
-        backdropFilter: 'blur(8px)',
+        background: alpha(theme.palette.background.paper, 0.6),
+        backdropFilter: 'blur(10px)',
+        boxShadow: theme.shadows[2],
         '&:hover': {
-          boxShadow: `0 8px 24px ${alpha(theme.palette.primary.main, 0.1)}`,
-          transform: 'translateY(-5px)',
+          boxShadow: theme.shadows[8],
+          transform: 'translateY(-8px)',
           borderColor: alpha(theme.palette.primary.main, 0.2),
         }
       }}
     >
-      <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
-        <Rating value={rating} readOnly size="small" sx={{ mb: 2, color: theme.palette.secondary.main }} />
+      <CardContent sx={{ p: { xs: 4, sm: 5 } }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+          <Rating
+            value={rating}
+            readOnly
+            size="small"
+            sx={{
+              color: theme.palette.secondary.main,
+              '& .MuiRating-iconFilled': {
+                filter: 'drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2))'
+              }
+            }}
+          />
 
-        <Box sx={{ position: 'relative', mb: 3 }}>
           <FormatQuote
             sx={{
-              position: 'absolute',
-              top: -10,
-              left: -10,
-              fontSize: '3rem',
-              color: alpha(theme.palette.primary.main, 0.1),
+              fontSize: { xs: '2.5rem', sm: '3rem' },
+              color: alpha(theme.palette.primary.main, 0.15),
               transform: 'rotate(180deg)'
             }}
           />
-          <Typography
-            variant="body1"
-            sx={{
-              position: 'relative',
-              zIndex: 1,
-              fontStyle: 'italic',
-              lineHeight: 1.7,
-              color: theme.palette.text.secondary,
-              fontSize: { xs: '0.9375rem', sm: '1rem' },
-            }}
-          >
-            "{testimonial}"
-          </Typography>
         </Box>
 
-        <Divider sx={{ my: 2.5, opacity: 0.6 }} />
+        <Typography
+          variant="body1"
+          sx={{
+            position: 'relative',
+            zIndex: 1,
+            fontStyle: 'italic',
+            lineHeight: 1.8,
+            color: theme.palette.text.secondary,
+            fontSize: { xs: '0.9375rem', sm: '1rem', md: '1.0625rem' },
+            minHeight: { xs: '120px', sm: '150px' },
+            mb: 3
+          }}
+        >
+          "{testimonial}"
+        </Typography>
+
+        <Divider sx={{ my: 3, opacity: 0.6 }} />
 
         <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
           <Avatar
             src={avatar}
             alt={name}
             sx={{
-              width: { xs: 48, sm: 56 },
-              height: { xs: 48, sm: 56 },
-              border: `2px solid ${theme.palette.primary.main}`,
-              boxShadow: `0 4px 8px ${alpha(theme.palette.primary.main, 0.25)}`,
+              width: { xs: 56, sm: 64 },
+              height: { xs: 56, sm: 64 },
+              border: `3px solid ${alpha(theme.palette.background.paper, 0.8)}`,
+              boxShadow: `0 8px 16px ${alpha(theme.palette.primary.main, 0.25)}`,
             }}
           />
-          <Box sx={{ ml: 2 }}>
+          <Box sx={{ ml: 2.5 }}>
             <Typography
-              variant="subtitle1"
+              variant="h6"
               sx={{
-                fontWeight: 600,
-                fontSize: { xs: '1rem', sm: '1.125rem' },
-                color: 'text.primary'
+                fontWeight: 700,
+                fontSize: { xs: '1.0625rem', sm: '1.125rem', md: '1.25rem' },
+                color: 'text.primary',
+                mb: 0.5
               }}
             >
               {name}
@@ -114,7 +126,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, avatar, r
               color="text.secondary"
               sx={{
                 fontSize: { xs: '0.8125rem', sm: '0.875rem' },
-                opacity: 0.85
+                opacity: 0.85,
+                fontWeight: 500
               }}
             >
               {role}
@@ -211,6 +224,18 @@ const TestimonialsSection: React.FC = () => {
       <Box
         sx={{
           position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: `linear-gradient(180deg, ${alpha(theme.palette.background.default, 0.5)} 0%, ${alpha(theme.palette.background.paper, 0.5)} 100%)`,
+          zIndex: 0
+        }}
+      />
+
+      <Box
+        sx={{
+          position: 'absolute',
           top: '5%',
           left: '0',
           width: '100%',
@@ -228,6 +253,34 @@ const TestimonialsSection: React.FC = () => {
           width: '70%',
           height: '60%',
           background: `radial-gradient(circle at 80% 80%, ${alpha(theme.palette.secondary.main, 0.04)} 0%, transparent 70%)`,
+          zIndex: 0
+        }}
+      />
+
+      {/* Additional decorative elements */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '25%',
+          right: '15%',
+          width: { xs: '30px', md: '50px' },
+          height: { xs: '30px', md: '50px' },
+          borderRadius: '10px',
+          transform: 'rotate(25deg)',
+          background: alpha(theme.palette.primary.main, 0.06),
+          zIndex: 0
+        }}
+      />
+
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '30%',
+          left: '10%',
+          width: { xs: '25px', md: '40px' },
+          height: { xs: '25px', md: '40px' },
+          borderRadius: '50%',
+          background: alpha(theme.palette.secondary.main, 0.08),
           zIndex: 0
         }}
       />
@@ -289,8 +342,8 @@ const TestimonialsSection: React.FC = () => {
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-            gap: { xs: 3, sm: 4 },
-            mb: { xs: 4, md: 6 },
+            gap: { xs: 4, sm: 5, md: 6 },
+            mb: { xs: 6, md: 8 },
             opacity: isVisible ? 1 : 0,
             transition: 'opacity 0.6s ease',
             transitionDelay: '0.2s'
@@ -313,47 +366,72 @@ const TestimonialsSection: React.FC = () => {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center',
-            gap: 2,
-            mt: { xs: 3, md: 4 },
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 3,
+            mt: { xs: 4, md: 6 },
             opacity: isVisible ? 1 : 0,
             transition: 'opacity 0.6s ease',
             transitionDelay: '0.6s'
           }}
         >
-          <IconButton
-            onClick={handlePrev}
-            aria-label="Previous testimonial"
+          <Box
             sx={{
-              bgcolor: alpha(theme.palette.primary.main, 0.1),
-              color: theme.palette.primary.main,
-              width: { xs: 40, md: 48 },
-              height: { xs: 40, md: 48 },
-              '&:hover': {
-                bgcolor: alpha(theme.palette.primary.main, 0.2)
-              },
-              transition: 'all 0.2s ease'
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 3
             }}
           >
-            <ArrowBackIos sx={{ fontSize: { xs: '1rem', md: '1.25rem' }, ml: 1 }} />
-          </IconButton>
+            <IconButton
+              onClick={handlePrev}
+              aria-label="Previous testimonial"
+              sx={{
+                bgcolor: alpha(theme.palette.primary.main, 0.1),
+                color: theme.palette.primary.main,
+                width: { xs: 48, md: 56 },
+                height: { xs: 48, md: 56 },
+                '&:hover': {
+                  bgcolor: alpha(theme.palette.primary.main, 0.2),
+                  transform: 'translateX(-3px)'
+                },
+                transition: 'all 0.3s ease',
+                boxShadow: theme.shadows[2]
+              }}
+            >
+              <ArrowBackIos sx={{ fontSize: { xs: '1.125rem', md: '1.25rem' }, ml: 1 }} />
+            </IconButton>
 
-          <IconButton
-            onClick={handleNext}
-            aria-label="Next testimonial"
+            <IconButton
+              onClick={handleNext}
+              aria-label="Next testimonial"
+              sx={{
+                bgcolor: alpha(theme.palette.primary.main, 0.1),
+                color: theme.palette.primary.main,
+                width: { xs: 48, md: 56 },
+                height: { xs: 48, md: 56 },
+                '&:hover': {
+                  bgcolor: alpha(theme.palette.primary.main, 0.2),
+                  transform: 'translateX(3px)'
+                },
+                transition: 'all 0.3s ease',
+                boxShadow: theme.shadows[2]
+              }}
+            >
+              <ArrowForwardIos sx={{ fontSize: { xs: '1.125rem', md: '1.25rem' } }} />
+            </IconButton>
+          </Box>
+
+          <Typography
+            variant="body2"
+            color="text.secondary"
             sx={{
-              bgcolor: alpha(theme.palette.primary.main, 0.1),
-              color: theme.palette.primary.main,
-              width: { xs: 40, md: 48 },
-              height: { xs: 40, md: 48 },
-              '&:hover': {
-                bgcolor: alpha(theme.palette.primary.main, 0.2)
-              },
-              transition: 'all 0.2s ease'
+              fontSize: { xs: '0.875rem', sm: '0.9375rem' },
+              opacity: 0.7,
+              fontStyle: 'italic'
             }}
           >
-            <ArrowForwardIos sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }} />
-          </IconButton>
+            Swipe to see more testimonials
+          </Typography>
         </Box>
       </Container>
     </Box>

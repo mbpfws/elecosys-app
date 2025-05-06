@@ -64,26 +64,39 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, suffix = '', index, i
     <Paper
       elevation={0}
       sx={{
-        py: { xs: 4, md: 5 },
-        px: { xs: 3, md: 4 },
+        py: { xs: 5, md: 6 },
+        px: { xs: 4, md: 5 },
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        borderRadius: '16px',
-        background: alpha(theme.palette.background.paper, 0.6),
-        backdropFilter: 'blur(10px)',
-        border: `1px solid ${alpha(theme.palette.divider, 0.6)}`,
+        borderRadius: '20px',
+        background: alpha(theme.palette.background.paper, 0.7),
+        backdropFilter: 'blur(15px)',
+        border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+        boxShadow: theme.shadows[3],
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
         transition: 'all 0.6s ease',
         transitionDelay: `${0.2 + index * 0.1}s`,
+        position: 'relative',
+        overflow: 'hidden',
         '&:hover': {
-          boxShadow: theme.shadows[4],
-          transform: 'translateY(-5px)',
-          borderColor: alpha(theme.palette.primary.main, 0.3),
+          boxShadow: theme.shadows[8],
+          transform: 'translateY(-8px)',
+          borderColor: alpha(theme.palette.primary.main, 0.2),
+        },
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '6px',
+          background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+          opacity: 0.8
         }
       }}
     >
@@ -93,11 +106,12 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, suffix = '', index, i
         sx={{
           fontWeight: 'bold',
           color: theme.palette.primary.main,
-          mb: 1,
-          fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
-          lineHeight: 1.2,
+          mb: 2,
+          fontSize: { xs: '2.75rem', sm: '3.25rem', md: '3.75rem' },
+          lineHeight: 1.1,
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
+          textShadow: `0 2px 10px ${alpha(theme.palette.primary.main, 0.2)}`
         }}
       >
         {isVisible ? (
@@ -111,9 +125,11 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, suffix = '', index, i
         variant="h6"
         color="text.secondary"
         sx={{
-          fontWeight: 'medium',
-          fontSize: { xs: '1rem', sm: '1.125rem' },
-          opacity: 0.85
+          fontWeight: 500,
+          fontSize: { xs: '1.0625rem', sm: '1.125rem', md: '1.25rem' },
+          opacity: 0.9,
+          letterSpacing: '0.5px',
+          textTransform: 'uppercase'
         }}
       >
         {label}
@@ -190,6 +206,18 @@ const StatsSection: React.FC = () => {
       <Box
         sx={{
           position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: `linear-gradient(180deg, ${alpha(theme.palette.background.paper, 0.8)} 0%, ${alpha(theme.palette.background.default, 0.8)} 100%)`,
+          zIndex: 0
+        }}
+      />
+
+      <Box
+        sx={{
+          position: 'absolute',
           top: '20%',
           left: '10%',
           width: { xs: '200px', md: '300px' },
@@ -213,6 +241,35 @@ const StatsSection: React.FC = () => {
           background: alpha(theme.palette.secondary.main, 0.04),
           filter: 'blur(50px)',
           opacity: 0.6,
+          zIndex: 0
+        }}
+      />
+
+      {/* Additional decorative elements */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '40%',
+          right: '15%',
+          width: { xs: '30px', md: '50px' },
+          height: { xs: '30px', md: '50px' },
+          borderRadius: '12px',
+          transform: 'rotate(45deg)',
+          background: alpha(theme.palette.primary.main, 0.06),
+          zIndex: 0
+        }}
+      />
+
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '30%',
+          left: '20%',
+          width: { xs: '25px', md: '40px' },
+          height: { xs: '25px', md: '40px' },
+          borderRadius: '8px',
+          transform: 'rotate(15deg)',
+          background: alpha(theme.palette.success.main, 0.07),
           zIndex: 0
         }}
       />
@@ -304,20 +361,15 @@ const StatsSection: React.FC = () => {
 
         <Box
           sx={{
-            mt: { xs: 8, md: 12 },
-            p: { xs: 3, sm: 5, md: 6 },
-            borderRadius: '16px',
-            background: alpha(theme.palette.background.paper, 0.8),
-            backdropFilter: 'blur(10px)',
-            border: `1px solid ${alpha(theme.palette.divider, 0.6)}`,
-            boxShadow: theme.shadows[2],
+            mt: { xs: 10, md: 14 },
+            p: { xs: 0, sm: 0, md: 0 },
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
             transition: 'all 0.6s ease',
             transitionDelay: '0.6s'
           }}
         >
-          <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
+          <Grid container spacing={{ xs: 5, md: 8 }} alignItems="center">
             <Grid
               {...{
                 item: true,
@@ -326,16 +378,58 @@ const StatsSection: React.FC = () => {
               }}
             >
               <Box
-                component="img"
-                src="/images/landing/impact-illustration.png"
-                alt="Our impact illustration"
                 sx={{
-                  maxWidth: '100%',
-                  height: 'auto',
-                  borderRadius: '12px',
-                  boxShadow: theme.shadows[3],
+                  position: 'relative',
+                  borderRadius: '24px',
+                  overflow: 'hidden',
+                  boxShadow: theme.shadows[10],
+                  transform: 'perspective(1000px) rotateY(-5deg) rotateX(5deg)',
+                  transition: 'all 0.5s ease',
+                  '&:hover': {
+                    transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg)',
+                  }
                 }}
-              />
+              >
+                <Box
+                  component="img"
+                  src="/images/landing/impact-illustration.png"
+                  alt="Our impact illustration"
+                  sx={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+                  }}
+                />
+
+                {/* Overlay gradient */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.1)} 0%, transparent 100%)`,
+                    zIndex: 1
+                  }}
+                />
+
+                {/* Decorative elements */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: -20,
+                    right: -20,
+                    width: 100,
+                    height: 100,
+                    borderRadius: '50%',
+                    background: alpha(theme.palette.primary.main, 0.1),
+                    filter: 'blur(30px)',
+                    zIndex: 0
+                  }}
+                />
+              </Box>
             </Grid>
 
             <Grid
@@ -345,42 +439,81 @@ const StatsSection: React.FC = () => {
                 md: 6
               }}
             >
-              <Typography
-                variant="h4"
-                component="h3"
-                gutterBottom
+              <Box
                 sx={{
-                  fontWeight: 'bold',
-                  mb: 3,
-                  fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                  p: { xs: 4, sm: 5, md: 6 },
+                  borderRadius: '20px',
+                  background: alpha(theme.palette.background.paper, 0.7),
+                  backdropFilter: 'blur(15px)',
+                  border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+                  boxShadow: theme.shadows[4],
+                  height: '100%',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '6px',
+                    height: '100%',
+                    background: `linear-gradient(180deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                    opacity: 0.8
+                  }
                 }}
               >
-                {t('landing.statsSection.impactTitle')}
-              </Typography>
+                <Typography
+                  variant="h3"
+                  component="h3"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 'bold',
+                    mb: 4,
+                    fontSize: { xs: '2rem', sm: '2.25rem', md: '2.5rem' },
+                    color: theme.palette.primary.main,
+                    position: 'relative',
+                    display: 'inline-block',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: '-10px',
+                      left: 0,
+                      width: '60px',
+                      height: '4px',
+                      background: theme.palette.primary.main,
+                      borderRadius: '2px'
+                    }
+                  }}
+                >
+                  {t('landing.statsSection.impactTitle')}
+                </Typography>
 
-              <Typography
-                variant="body1"
-                paragraph
-                sx={{
-                  mb: 3,
-                  fontSize: { xs: '1rem', md: '1.125rem' },
-                  lineHeight: 1.7,
-                  color: 'text.secondary'
-                }}
-              >
-                {t('landing.statsSection.impactDescription1')}
-              </Typography>
+                <Typography
+                  variant="body1"
+                  paragraph
+                  sx={{
+                    mb: 4,
+                    fontSize: { xs: '1.0625rem', md: '1.125rem' },
+                    lineHeight: 1.8,
+                    color: 'text.secondary',
+                    fontWeight: 400
+                  }}
+                >
+                  {t('landing.statsSection.impactDescription1')}
+                </Typography>
 
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: { xs: '1rem', md: '1.125rem' },
-                  lineHeight: 1.7,
-                  color: 'text.secondary'
-                }}
-              >
-                {t('landing.statsSection.impactDescription2')}
-              </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: { xs: '1.0625rem', md: '1.125rem' },
+                    lineHeight: 1.8,
+                    color: 'text.secondary',
+                    fontWeight: 400
+                  }}
+                >
+                  {t('landing.statsSection.impactDescription2')}
+                </Typography>
+              </Box>
             </Grid>
           </Grid>
         </Box>
