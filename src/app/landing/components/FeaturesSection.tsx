@@ -101,12 +101,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, ind
   return (
     <Paper
       ref={cardRef}
-      elevation={0}
+      elevation={3} // Increased elevation for better visibility
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
       className="feature-card"
       sx={{
+        width: '100%', // Ensure full width
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -121,13 +122,15 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, ind
         position: 'relative',
         overflow: 'visible',
         borderRadius: '16px',
-        border: `1px solid ${alpha(theme.palette.divider, 0.08)}`,
-        background: alpha(theme.palette.background.paper, 0.6),
+        border: `1px solid ${alpha(theme.palette.divider, 0.15)}`, // More visible border
+        background: alpha(theme.palette.background.paper, 0.8), // More opaque background
         backdropFilter: 'blur(8px)',
         p: { xs: 3, sm: 4 },
         transformStyle: 'preserve-3d',
+        boxShadow: `0 10px 20px ${alpha(theme.palette.common.black, 0.1)}`, // Default shadow
         '&:hover': {
-          boxShadow: `0 20px 30px ${alpha(theme.palette.primary.main, 0.15)}`,
+          boxShadow: `0 20px 30px ${alpha(theme.palette.primary.main, 0.2)}`,
+          transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) translateY(-10px)`,
           '& .feature-icon-wrapper': {
             transform: 'translateZ(30px) scale(1.1)',
             boxShadow: `0 15px 25px ${alpha(iconColor || theme.palette.primary.main, 0.3)}`,
@@ -172,13 +175,15 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, ind
             alignItems: 'center',
             width: { xs: '100px', sm: '120px', md: '140px' },
             height: { xs: '100px', sm: '120px', md: '140px' },
-            borderRadius: '24px',
+            borderRadius: '50%', // Circular shape
             transition: 'all 0.4s ease',
             transform: 'translateZ(20px)',
             background: alpha(iconColor || theme.palette.primary.main, 0.05),
-            padding: 2,
-            border: `1px solid ${alpha(iconColor || theme.palette.primary.main, 0.1)}`,
+            padding: 0, // Remove padding to allow image to fill
+            border: `2px solid ${alpha(iconColor || theme.palette.primary.main, 0.2)}`,
             boxShadow: `0 10px 20px ${alpha(iconColor || theme.palette.primary.main, 0.15)}`,
+            overflow: 'hidden', // Ensure image stays within the circle
+            position: 'relative', // For absolute positioning of the image
           }}
         >
           <Box
@@ -187,9 +192,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, ind
             alt={title}
             className="feature-image"
             sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
               width: '100%',
               height: '100%',
-              objectFit: 'contain',
+              objectFit: 'cover', // Fill the circle
+              borderRadius: '50%', // Ensure image is circular
               filter: 'drop-shadow(0px 8px 16px rgba(0,0,0,0.25))',
               transition: 'all 0.5s ease',
             }}
@@ -363,42 +372,42 @@ const FeaturesSection: React.FC = () => {
       title: t('landing.features.writingTools.title'),
       description: t('landing.features.writingTools.description'),
       iconColor: '#FF5C8D', // Pink
-      imagePath: '/images/illustrations/characters/1.png'
+      imagePath: '/images/front-pages/landing-page/chat.png'
     },
     {
       icon: <Quiz />,
       title: t('landing.features.adaptiveTest.title'),
       description: t('landing.features.adaptiveTest.description'),
       iconColor: '#7C4DFF', // Purple
-      imagePath: '/images/illustrations/characters/2.png'
+      imagePath: '/images/front-pages/landing-page/sitting-girl-with-laptop.png'
     },
     {
       icon: <Chat />,
       title: t('landing.features.aiTutor.title'),
       description: t('landing.features.aiTutor.description'),
       iconColor: '#00BFA5', // Teal
-      imagePath: '/images/illustrations/characters/3.png'
+      imagePath: '/images/front-pages/landing-page/nannie.png'
     },
     {
       icon: <Language />,
       title: t('landing.features.vietnamese.title'),
       description: t('landing.features.vietnamese.description'),
       iconColor: '#FF9100', // Orange
-      imagePath: '/images/illustrations/characters/4.png'
+      imagePath: '/images/front-pages/landing-page/paul.png'
     },
     {
       icon: <School />,
       title: t('landing.features.structured.title'),
       description: t('landing.features.structured.description'),
       iconColor: '#2979FF', // Blue
-      imagePath: '/images/illustrations/characters/5.png'
+      imagePath: '/images/front-pages/landing-page/sophie.png'
     },
     {
       icon: <TrendingUp />,
       title: t('landing.features.progress.title'),
       description: t('landing.features.progress.description'),
       iconColor: '#F50057', // Pink/Red
-      imagePath: '/images/illustrations/characters/6.png'
+      imagePath: '/images/front-pages/landing-page/chris.png'
     }
   ]
 
@@ -413,6 +422,10 @@ const FeaturesSection: React.FC = () => {
         background: mode === 'light'
           ? 'linear-gradient(180deg, #F4F5FA 0%, #FFFFFF 100%)'
           : 'linear-gradient(180deg, #151525 0%, #1E1E35 100%)',
+        minHeight: '100vh', // Ensure section has minimum height
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
       }}
     >
       {/* Particles Container */}
@@ -529,6 +542,7 @@ const FeaturesSection: React.FC = () => {
         sx={{
           position: 'relative',
           zIndex: 1,
+          px: { xs: 2, sm: 3, md: 4 }, // Add horizontal padding
         }}
       >
         <Box className={styles.sectionTitle}>
@@ -587,6 +601,8 @@ const FeaturesSection: React.FC = () => {
               gap: { xs: 4, sm: 5, md: 6 },
               width: '100%',
               transformStyle: 'preserve-3d',
+              mx: 'auto', // Center the grid
+              maxWidth: '1200px', // Limit maximum width
             }}
           >
             {features.map((feature, index) => (
@@ -597,6 +613,7 @@ const FeaturesSection: React.FC = () => {
                   justifyContent: 'center',
                   transformStyle: 'preserve-3d',
                   transform: `translateZ(${10 * (index % 3)}px)`,
+                  height: '100%', // Ensure consistent height
                 }}
               >
                 <FeatureCard
