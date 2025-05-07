@@ -10,10 +10,8 @@ export default function Home() {
   const { t } = useTranslation()
 
   useEffect(() => {
-    // In a real app, we would check if the user is authenticated
-    // For now, we'll redirect to the login page
-    // Later, we'll implement authentication and redirect to dashboard if authenticated
-    router.push('/pages/login')
+    // Redirect to the landing page
+    router.push('/landing')
   }, [router])
 
   return (

@@ -11,6 +11,8 @@ interface AuthContextType {
   user: User | null
   session: Session | null
   isLoading: boolean
+  userRole: string | null
+  isAdmin: boolean
   signUp: (email: string, password: string, metadata?: { [key: string]: any }) => Promise<{
     error: Error | null
     data: any | null
@@ -32,6 +34,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setAuthUser] = useState<User | null>(null)
   const [session, setSession] = useState<Session | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [userRole, setUserRole] = useState<string | null>(null)
+  const [isAdmin, setIsAdmin] = useState<boolean>(false)
   const router = useRouter()
   const dispatch = useDispatch()
 
@@ -40,23 +44,42 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const getSession = async () => {
       setIsLoading(true)
       const { data: { session }, error } = await supabase.auth.getSession()
-      
+
       if (error) {
         console.error('Error getting session:', error.message)
       }
-      
+
       setSession(session)
       setAuthUser(session?.user ?? null)
-      
+
       if (session?.user) {
+        // Fetch user profile to get role
+        const { data: profile, error: profileError } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', session.user.id)
+          .single()
+
+        if (profileError) {
+          console.error('Error fetching user profile:', profileError.message)
+        }
+
+        const role = profile?.role || 'user'
+        setUserRole(role)
+        setIsAdmin(role === 'admin')
+
         // Update Redux store with user data
         dispatch(setUser({
           id: session.user.id,
           email: session.user.email,
+          role: role,
           // Add other user properties as needed
         }))
+      } else {
+        setUserRole(null)
+        setIsAdmin(false)
       }
-      
+
       setIsLoading(false)
     }
 
@@ -67,19 +90,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       async (event, session) => {
         setSession(session)
         setAuthUser(session?.user ?? null)
-        
+
         if (session?.user) {
+          // Fetch user profile to get role
+          const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('role')
+            .eq('id', session.user.id)
+            .single()
+
+          if (profileError) {
+            console.error('Error fetching user profile:', profileError.message)
+          }
+
+          const role = profile?.role || 'user'
+          setUserRole(role)
+          setIsAdmin(role === 'admin')
+
           // Update Redux store with user data
           dispatch(setUser({
             id: session.user.id,
             email: session.user.email,
+            role: role,
             // Add other user properties as needed
           }))
         } else {
           // Clear user data from Redux store
+          setUserRole(null)
+          setIsAdmin(false)
           dispatch(clearUser())
         }
-        
+
         setIsLoading(false)
       }
     )
@@ -99,7 +140,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           data: metadata,
         },
       })
-      
+
       return { data, error }
     } catch (error) {
       console.error('Error in signUp:', error)
@@ -113,7 +154,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email,
         password,
       })
-      
+
       return { data, error }
     } catch (error) {
       console.error('Error in signIn:', error)
@@ -136,7 +177,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/reset-password`,
       })
-      
+
       return { data, error }
     } catch (error) {
       console.error('Error in resetPassword:', error)
@@ -148,6 +189,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     user,
     session,
     isLoading,
+    userRole,
+    isAdmin,
     signUp,
     signIn,
     signOut,

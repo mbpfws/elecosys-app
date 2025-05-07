@@ -8,7 +8,71 @@
 
 This document outlines the next tasks to be implemented in the AI-Powered Social Learning Platform project. It provides a detailed breakdown of upcoming work, prioritized based on the project roadmap and dependencies.
 
-## Current Priority: Phase 2 - Authentication and User Profile
+## Current Priority: Project Structure Improvements and Authentication Strategy
+
+Based on analysis of the current codebase, we need to address some structural issues and finalize our authentication strategy before continuing with user profile management.
+
+### Task 0: Review and Implement Project Structure and Authentication Recommendations
+
+- **Status:** Completed
+- **Description:** Review and implement the recommendations in the project structure and authentication documents
+- **Priority:** High
+- **Dependencies:** None
+- **Reference:** `docs/PROJECT_STRUCTURE_RECOMMENDATIONS.md`, `docs/AUTHENTICATION_STRATEGY.md`, `docs/MATERIO_INTEGRATION_GUIDE.md`
+
+#### Sub-tasks:
+
+1. **Review Project Structure Recommendations** ✅
+   - Review the recommendations in `docs/PROJECT_STRUCTURE_RECOMMENDATIONS.md`
+   - Identify which recommendations to implement immediately vs. later
+   - Create a plan for implementing the selected recommendations
+
+2. **Review Authentication Strategy** ✅
+   - Review the authentication strategy in `docs/AUTHENTICATION_STRATEGY.md`
+   - Confirm decision to continue with Supabase Auth rather than NextAuth.js
+   - Plan implementation of user roles and capabilities
+
+3. **Review Materio Integration Guide** ✅
+   - Review the Materio integration guide in `docs/MATERIO_INTEGRATION_GUIDE.md`
+   - Identify key components to integrate immediately
+   - Create a plan for phased integration of Materio components
+
+4. **Implement High-Priority Recommendations** ✅
+   - Reorganize project structure according to selected recommendations
+   - Implement consistent naming conventions
+   - Set up proper directory structure for better organization
+   - Integrate key Materio components
+
+#### Files Created/Modified:
+
+- `src/app/(blank-layout)/(guest-only)/login/page.tsx` (new)
+- `src/hooks/useRole.ts` (new)
+- `src/hooks/useSettings.ts` (new)
+- `src/contexts/AuthContext.tsx` (updated)
+- `src/middleware.ts` (updated)
+- `src/data/dictionaries/en.json` (updated)
+- `src/data/dictionaries/vi.json` (updated)
+- `DIRECTORY_STRUCTURE.md` (updated)
+- `supabase/migrations/20250507_create_profiles_table.sql` (new)
+- `supabase/migrations/20250507_create_roles_tables.sql` (new)
+
+#### Acceptance Criteria:
+- ✅ Project structure is more organized and consistent
+- ✅ Authentication strategy is clearly defined and documented
+- ✅ Plan for Materio integration is established
+- ✅ High-priority recommendations are implemented
+
+#### Implementation Notes:
+- Created feature-based directory structure for better organization
+- Implemented role-based authentication with Supabase
+- Created role-based hooks for access control
+- Updated middleware for role-based route protection
+- Created SQL scripts for database schema
+- Copied and adapted Materio login page
+- Created useSettings hook for theme configuration
+- Updated i18n dictionaries with new translations
+
+## Next Priority: Phase 2 - Authentication and User Profile
 
 With Phase 1 (Project Setup and Basic Configuration) completed, the next priority is to implement authentication and user profile management using Supabase Auth.
 

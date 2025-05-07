@@ -37,33 +37,71 @@ This document provides a comprehensive overview of the project's directory struc
 │   │   └── vertical-menu/  # Vertical menu implementation
 │   │       └── index.tsx
 │   ├── app/                # Next.js App Router directory
-│   │   ├── pages/          # Application pages
-│   │   │   └── login/      # Login page
-│   │   │       ├── layout.tsx
-│   │   │       └── page.tsx
+│   │   ├── (blank-layout)/ # Blank layout pages
+│   │   │   ├── (guest-only)/ # Guest-only pages
+│   │   │   │   ├── login/    # Login page
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── register/ # Register page
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── forgot-password/ # Forgot password page
+│   │   │   │       └── page.tsx
+│   │   │   └── layout.tsx   # Blank layout component
+│   │   ├── (dashboard)/    # Dashboard layout pages
+│   │   │   ├── (admin)/    # Admin-only pages
+│   │   │   │   ├── users/  # User management
+│   │   │   │   ├── stats/  # Statistics
+│   │   │   │   └── content-management/ # Content management
+│   │   │   ├── (private)/  # Authenticated user pages
+│   │   │   │   ├── pages/  # General pages
+│   │   │   │   │   └── account-settings/ # Account settings
+│   │   │   │   ├── writing-tools/ # IELTS Writing Tools mini-app
+│   │   │   │   ├── adaptive-test/ # IELTS Adaptive Test mini-app
+│   │   │   │   └── chat/   # AI Tutor Chat
+│   │   │   └── layout.tsx  # Dashboard layout component
 │   │   ├── api/            # API Routes (Next.js API)
 │   │   │   └── README.md   # Placeholder for API routes
+│   │   ├── landing/        # Landing page
+│   │   │   ├── page.tsx    # Landing page component
+│   │   │   └── components/ # Landing page components
+│   │   │       ├── Header.tsx           # Header component
+│   │   │       ├── HeroSection.tsx      # Hero section
+│   │   │       ├── FeaturesSection.tsx  # Features section
+│   │   │       ├── HowItWorks.tsx       # How it works section
+│   │   │       ├── TestimonialsSection.tsx # Testimonials section
+│   │   │       ├── StatisticsSection.tsx # Statistics section
+│   │   │       ├── PricingSection.tsx   # Pricing section
+│   │   │       ├── CTASection.tsx       # CTA section
+│   │   │       └── Footer.tsx           # Footer component
 │   │   ├── layout.tsx      # Root layout
 │   │   ├── metadata.ts     # App metadata
 │   │   ├── page.tsx        # Root page
 │   │   └── globals.css     # Global styles
 │   ├── assets/             # Static assets (images, fonts, etc.)
 │   ├── components/         # Global reusable application components
-│   │   └── LanguageSwitcher.tsx # Language switcher component
+│   │   ├── ui/             # UI components (buttons, cards, etc.)
+│   │   ├── forms/          # Form components
+│   │   ├── layout/         # Layout components
+│   │   └── features/       # Feature-specific components
+│   │       └── LanguageSwitcher.tsx # Language switcher component
 │   ├── configs/            # Application configuration
 │   │   ├── i18n.ts         # i18n configuration
 │   │   ├── themeConfig.ts  # Theme configuration
 │   │   └── navigation/     # Navigation configuration
 │   │       └── vertical/   # Vertical navigation items
 │   │           └── index.ts
-│   ├── contexts/           # React Context providers (to be implemented)
+│   ├── contexts/           # React Context providers
+│   │   └── AuthContext.tsx # Authentication context provider
 │   ├── data/               # Static data, dictionaries
 │   │   └── dictionaries/   # i18n JSON files
 │   │       ├── en.json     # English translations
 │   │       └── vi.json     # Vietnamese translations
-│   ├── hooks/              # Global custom hooks (to be implemented)
+│   ├── hooks/              # Global custom hooks
+│   │   ├── useRole.ts      # Role-based access control hook
+│   │   └── useSettings.ts  # Settings hook
 │   ├── libs/               # External libraries configuration (to be implemented)
 │   ├── redux-store/        # Redux Toolkit store and slices
+│   │   ├── slices/         # Redux slices
+│   │   │   └── authSlice.ts # Authentication slice
 │   │   └── index.ts        # Redux store configuration
 │   ├── styles/             # Global and utility styles (to be implemented)
 │   ├── types/              # Global TypeScript types (to be implemented)
@@ -71,7 +109,10 @@ This document provides a comprehensive overview of the project's directory struc
 │       ├── gemini.ts       # Google Gemini API utility
 │       ├── i18n.ts         # i18n utility functions
 │       └── supabase.ts     # Supabase client utility
-├── supabase/               # Supabase specific files (to be implemented)
+├── supabase/               # Supabase specific files
+│   └── migrations/         # Database migrations
+│       ├── 20250507_create_profiles_table.sql # Profiles table migration
+│       └── 20250507_create_roles_tables.sql   # Roles tables migration
 ├── .env.local              # Environment variables (not in repository)
 ├── .eslintrc.json          # ESLint configuration
 ├── .gitignore              # Git ignore file

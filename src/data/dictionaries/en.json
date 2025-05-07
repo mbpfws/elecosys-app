@@ -55,9 +55,10 @@
     "alreadyHaveAccount": "Already have an account?",
     "haveAccount": "Already have an account?",
     "noAccount": "Don't have an account?",
-    "createAccount": "Create Account",
+    "newUser": "New on our platform?",
+    "createAccount": "Create an account",
     "loginInstead": "Login Instead",
-    "forgotPasswordLink": "Forgot Password?",
+    "forgotPassword": "Forgot password?",
     "resetPasswordSuccess": "Password reset successful",
     "resetPasswordError": "Failed to reset password",
     "loginSuccess": "Login successful",
@@ -70,7 +71,9 @@
     "invalidEmail": "Invalid email address",
     "orText": "OR",
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "welcomeMessage": "Welcome to IELTS Learning Hub!👋🏻",
+    "loginWelcome": "Please sign-in to your account and start the adventure"
   },
   "profile": {
     "title": "Profile",
@@ -296,6 +299,79 @@
     },
     "exportSuccess": "Data exported successfully",
     "exportError": "Failed to export data"
+  },
+  "landing": {
+    "appName": "IELTS Learning Hub",
+    "getStarted": "Get Started",
+    "imagePrompt": "Platform interface showcase image will be placed here",
+    "hero": {
+      "title": "Master IELTS with AI-Powered Learning",
+      "subtitle": "An integrated platform with AI tools to help you prepare for IELTS effectively",
+      "cta": "Start Learning Now"
+    },
+    "featuresSection": {
+      "title": "Our Features",
+      "subtitle": "Discover the powerful tools designed to enhance your IELTS preparation"
+    },
+    "features": {
+      "writingTools": {
+        "title": "AI Writing Tools",
+        "description": "Practice IELTS writing tasks with AI-generated prompts and receive detailed feedback on your essays"
+      },
+      "adaptiveTest": {
+        "title": "Adaptive Testing",
+        "description": "Take adaptive tests that adjust to your skill level for more effective practice"
+      },
+      "aiTutor": {
+        "title": "AI Tutor",
+        "description": "Get instant answers to your questions about English grammar, vocabulary, or IELTS strategies"
+      },
+      "vietnamese": {
+        "title": "Vietnamese Interface",
+        "description": "Navigate the platform easily with a fully localized Vietnamese interface"
+      },
+      "structured": {
+        "title": "Structured Learning",
+        "description": "Follow a clear learning path designed to improve your IELTS score systematically"
+      },
+      "progress": {
+        "title": "Progress Tracking",
+        "description": "Monitor your improvement over time with detailed performance analytics"
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Get started with our platform in three simple steps",
+      "step1": {
+        "title": "1. Create Your Account",
+        "description": "Sign up for an account to access all our AI-powered learning tools and track your progress"
+      },
+      "step2": {
+        "title": "2. Practice with AI Tools",
+        "description": "Use our Writing Tools and Adaptive Tests to improve your IELTS skills with personalized feedback"
+      },
+      "step3": {
+        "title": "3. Track Your Progress",
+        "description": "Monitor your improvement over time and identify areas that need more practice"
+      }
+    },
+    "cta": {
+      "title": "Ready to Improve Your IELTS Score?",
+      "subtitle": "Join thousands of students who have enhanced their English skills with our platform",
+      "button": "Register Now"
+    },
+    "footer": {
+      "description": "An AI-powered platform designed to help Vietnamese students prepare for IELTS exams effectively",
+      "links": {
+        "title": "Quick Links"
+      },
+      "contact": {
+        "title": "Contact Us",
+        "email": "Email: support@ieltslearninghub.com",
+        "phone": "Phone: +84 123 456 789"
+      },
+      "copyright": "All rights reserved."
+    }
   },
   "errors": {
     "general": "An error occurred. Please try again.",
