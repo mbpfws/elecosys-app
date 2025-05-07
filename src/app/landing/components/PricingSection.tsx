@@ -23,7 +23,19 @@ import {
 import { Check, Close } from '@mui/icons-material'
 import { useTranslation } from '@/utils/i18n'
 
-const PricingCard = ({ title, price, features, isPopular, ctaText, ctaLink, isVisible, delay }) => {
+interface PricingCardProps {
+  title: string;
+  price: number;
+  features: Array<{ text: string; included: boolean }>;
+  isPopular: boolean;
+  ctaText: string;
+  ctaLink: string;
+  isVisible: boolean;
+  delay: number;
+}
+
+const PricingCard: React.FC<PricingCardProps> = ({ title, price, features, isPopular, ctaText, ctaLink, isVisible, delay }) => {
+  const { t } = useTranslation()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
@@ -67,7 +79,7 @@ const PricingCard = ({ title, price, features, isPopular, ctaText, ctaLink, isVi
             textAlign: 'center'
           }}
         >
-          POPULAR
+          {t('landing.pricing.popular')}
         </Box>
       )}
 
@@ -90,6 +102,29 @@ const PricingCard = ({ title, price, features, isPopular, ctaText, ctaLink, isVi
           {title}
         </Typography>
 
+        {/* Pricing plan image */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+          <Box
+            component="img"
+            src={price === 0
+              ? "/images/landing/pricing-basic.png"
+              : price <= 7 || price <= 9
+                ? "/images/landing/pricing-standard.png"
+                : "/images/landing/pricing-enterprise.png"
+            }
+            alt={title}
+            sx={{
+              width: '100px',
+              height: '100px',
+              filter: 'drop-shadow(0px 4px 8px rgba(0,0,0,0.2))',
+              transition: 'transform 0.3s ease',
+              '&:hover': {
+                transform: 'scale(1.05)'
+              }
+            }}
+          />
+        </Box>
+
         <Box sx={{ mb: 4 }}>
           <Typography
             variant="h3"
@@ -102,7 +137,7 @@ const PricingCard = ({ title, price, features, isPopular, ctaText, ctaLink, isVi
               lineHeight: 1.2
             }}
           >
-            {price === 0 ? 'Free' : (
+            {price === 0 ? t('landing.pricing.free.title') : (
               <>
                 <Box component="span" sx={{
                   fontSize: { xs: '1.25rem', sm: '1.5rem' },
@@ -119,7 +154,7 @@ const PricingCard = ({ title, price, features, isPopular, ctaText, ctaLink, isVi
               color="text.secondary"
               sx={{ mt: 0.5 }}
             >
-              per month
+              {t('landing.pricing.perMonth')}
             </Typography>
           )}
         </Box>
@@ -145,12 +180,17 @@ const PricingCard = ({ title, price, features, isPopular, ctaText, ctaLink, isVi
                 )}
               </ListItemIcon>
               <ListItemText
-                primary={feature.text}
-                primaryTypographyProps={{
-                  variant: 'body2',
-                  fontSize: { xs: '0.875rem', sm: '0.9375rem' },
-                  color: feature.included ? 'text.primary' : 'text.disabled'
-                }}
+                primary={
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '0.9375rem' },
+                      color: feature.included ? 'text.primary' : 'text.disabled'
+                    }}
+                  >
+                    {feature.text}
+                  </Typography>
+                }
               />
             </ListItem>
           ))}
@@ -187,8 +227,7 @@ const PricingCard = ({ title, price, features, isPopular, ctaText, ctaLink, isVi
 const PricingSection = () => {
   const { t } = useTranslation()
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'))
+  // Responsive design is handled through sx props
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
   const [isAnnual, setIsAnnual] = useState(false)
@@ -204,14 +243,13 @@ const PricingSection = () => {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.disconnect()
-      }
+      observer.disconnect()
     }
   }, [])
 
@@ -219,57 +257,57 @@ const PricingSection = () => {
     setIsAnnual(!isAnnual)
   }
 
-  // Pricing data
+  // Pricing data with translations
   const pricingPlans = [
     {
-      title: "Free",
+      title: t('landing.pricing.free.title') || "Free",
       price: 0,
       features: [
-        { text: "Basic AI Writing Feedback", included: true },
-        { text: "Limited Adaptive Tests", included: true },
-        { text: "Basic AI Tutor Chat", included: true },
-        { text: "Progress Tracking", included: true },
-        { text: "Vietnamese Interface", included: true },
-        { text: "Advanced Writing Analysis", included: false },
-        { text: "Unlimited Adaptive Tests", included: false },
-        { text: "Priority Support", included: false }
+        { text: t('landing.pricing.free.features.writingFeedback') || "Basic AI Writing Feedback", included: true },
+        { text: t('landing.pricing.free.features.adaptiveTests') || "Limited Adaptive Tests", included: true },
+        { text: t('landing.pricing.free.features.aiTutor') || "Basic AI Tutor Chat", included: true },
+        { text: t('landing.pricing.free.features.progressTracking') || "Progress Tracking", included: true },
+        { text: t('landing.pricing.free.features.vietnameseInterface') || "Vietnamese Interface", included: true },
+        { text: t('landing.pricing.free.features.advancedWriting') || "Advanced Writing Analysis", included: false },
+        { text: t('landing.pricing.free.features.unlimitedTests') || "Unlimited Adaptive Tests", included: false },
+        { text: t('landing.pricing.free.features.prioritySupport') || "Priority Support", included: false }
       ],
       isPopular: false,
-      ctaText: "Get Started",
+      ctaText: t('landing.pricing.free.ctaText') || "Get Started",
       ctaLink: "/pages/register"
     },
     {
-      title: "Premium",
+      title: t('landing.pricing.premium.title') || "Premium",
       price: isAnnual ? 9 : 12,
       features: [
-        { text: "Advanced AI Writing Feedback", included: true },
-        { text: "Unlimited Adaptive Tests", included: true },
-        { text: "Full AI Tutor Access", included: true },
-        { text: "Detailed Progress Analytics", included: true },
-        { text: "Vietnamese Interface", included: true },
-        { text: "Speaking Practice Tools", included: true },
-        { text: "Personalized Study Plan", included: true },
-        { text: "Priority Support", included: true }
+        { text: t('landing.pricing.premium.features.writingFeedback') || "Advanced AI Writing Feedback", included: true },
+        { text: t('landing.pricing.premium.features.adaptiveTests') || "Unlimited Adaptive Tests", included: true },
+        { text: t('landing.pricing.premium.features.aiTutor') || "Full AI Tutor Access", included: true },
+        { text: t('landing.pricing.premium.features.progressTracking') || "Detailed Progress Analytics", included: true },
+        { text: t('landing.pricing.premium.features.vietnameseInterface') || "Vietnamese Interface", included: true },
+        { text: t('landing.pricing.premium.features.speakingPractice') || "Speaking Practice Tools", included: true },
+        { text: t('landing.pricing.premium.features.studyPlan') || "Personalized Study Plan", included: true },
+        { text: t('landing.pricing.premium.features.prioritySupport') || "Priority Support", included: true }
       ],
       isPopular: true,
-      ctaText: "Get Premium",
+      ctaText: t('landing.pricing.premium.ctaText') || "Get Premium",
       ctaLink: "/pages/register"
     },
     {
-      title: "Standard",
+      title: t('landing.pricing.standard.title') || "Standard",
       price: isAnnual ? 5 : 7,
       features: [
-        { text: "Enhanced AI Writing Feedback", included: true },
-        { text: "Extended Adaptive Tests", included: true },
-        { text: "Standard AI Tutor Access", included: true },
-        { text: "Enhanced Progress Tracking", included: true },
-        { text: "Vietnamese Interface", included: true },
-        { text: "Speaking Practice Tools", included: false },
-        { text: "Personalized Study Plan", included: false },
-        { text: "Priority Support", included: false }
+        { text: t('landing.pricing.standard.features.writingFeedback') || "Enhanced AI Writing Feedback", included: true },
+        { text: t('landing.pricing.standard.features.adaptiveTests') || "Extended Adaptive Tests", included: true },
+        { text: t('landing.pricing.standard.features.aiTutor') || "Standard AI Tutor Access", included: true },
+        { text: t('landing.pricing.standard.features.progressTracking') || "Enhanced Progress Tracking", included: true },
+        { text: t('landing.pricing.standard.features.vietnameseInterface') || "Vietnamese Interface", included: true },
+        { text: t('landing.pricing.standard.features.speakingPractice') || "Speaking Practice Tools", included: false },
+        { text: t('landing.pricing.standard.features.studyPlan') || "Personalized Study Plan", included: false },
+        { text: t('landing.pricing.standard.features.prioritySupport') || "Priority Support", included: false }
       ],
       isPopular: false,
-      ctaText: "Choose Standard",
+      ctaText: t('landing.pricing.standard.ctaText') || "Choose Standard",
       ctaLink: "/pages/register"
     }
   ]
@@ -352,7 +390,7 @@ const PricingSection = () => {
               }
             }}
           >
-            Pricing Plans
+            {t('landing.pricingSection.title')}
           </Typography>
           <Typography
             variant="h6"
@@ -367,7 +405,7 @@ const PricingSection = () => {
               lineHeight: 1.6
             }}
           >
-            Choose the plan that best fits your learning needs
+            {t('landing.pricingSection.subtitle')}
           </Typography>
 
           <Box
@@ -390,7 +428,7 @@ const PricingSection = () => {
                 fontSize: { xs: '0.9375rem', sm: '1rem' }
               }}
             >
-              Monthly
+              {t('landing.pricing.monthly')}
             </Typography>
             <FormControlLabel
               control={
@@ -412,7 +450,7 @@ const PricingSection = () => {
                   fontSize: { xs: '0.9375rem', sm: '1rem' }
                 }}
               >
-                Annual
+                {t('landing.pricing.annual')}
               </Typography>
               <Box
                 component="span"
@@ -428,7 +466,7 @@ const PricingSection = () => {
                   display: 'inline-block'
                 }}
               >
-                Save 25%
+                {t('landing.pricing.savePercent')}
               </Box>
             </Box>
           </Box>
@@ -441,11 +479,12 @@ const PricingSection = () => {
         >
           {pricingPlans.map((plan, index) => (
             <Grid
-              item
-              xs={12}
-              sm={index === 1 ? 12 : 6}
-              md={4}
               key={index}
+              size={{
+                xs: 12,
+                sm: index === 1 ? 12 : 6,
+                md: 4
+              }}
               sx={{
                 order: {
                   xs: plan.isPopular ? 0 : index + 1,
@@ -488,7 +527,7 @@ const PricingSection = () => {
               border: `1px solid ${alpha(theme.palette.divider, 0.1)}`
             }}
           >
-            All plans include a 14-day free trial. No credit card required.
+            {t('landing.pricing.freeTrial')}
           </Typography>
         </Box>
       </Container>

@@ -444,6 +444,60 @@ src/
 - Copy and adapt more Materio components as needed
 - Implement the database schema in Supabase
 
+## May 16, 2025
+
+### Landing Page Improvements and MUI Grid v2 Migration
+
+#### Progress
+- Fixed issues with the landing page components
+- Updated MUI Grid components to use proper Grid API
+- Fixed deprecated components and props
+- Fixed ref handling in components using Intersection Observer
+- Updated image paths to use the correct directories from Materio
+- Fixed duplicate opacity property in CTASection
+- Fixed unused variables and imports
+- Updated CODE_MODIFICATION_LOG.md with details of the changes
+- Updated TASK_TRACKING.md with new task for landing page fixes
+- Updated NEXT_TASKS.md to mark Task 2.1.3 as completed
+
+#### Challenges and Solutions
+- **Challenge:** MUI Grid v2 migration causing compatibility issues
+  - **Solution:** Reverted to using standard Grid API with proper props
+
+- **Challenge:** Ref handling in components using Intersection Observer
+  - **Solution:** Fixed by storing the ref in a variable inside the effect and using that variable in the cleanup function
+
+- **Challenge:** Duplicate opacity property in CTASection
+  - **Solution:** Combined the two properties into a single property with the correct value
+
+- **Challenge:** Deprecated paragraph prop in Typography components
+  - **Solution:** Removed the deprecated prop and used sx prop for margin instead
+
+#### Decisions
+- **Decision:** Use standard Grid API instead of Grid v2
+  - **Rationale:** Better compatibility with existing code and avoids breaking changes
+
+- **Decision:** Fix ref handling in components using Intersection Observer
+  - **Rationale:** Prevents potential memory leaks and React warnings
+
+- **Decision:** Update image paths to use the correct directories from Materio
+  - **Rationale:** Ensures proper display of images and consistency with Materio template
+
+#### Code Structure
+- Updated `src/app/landing/components/StatsSection.tsx` to use proper Grid API
+- Updated `src/app/landing/components/HowItWorksSection.tsx` to fix ref handling
+- Updated `src/app/landing/components/TestimonialsSection.tsx` to fix image paths
+- Updated `src/app/landing/components/CTASection.tsx` to fix duplicate opacity property
+- Updated `src/app/landing/components/Footer.tsx` to use proper Grid API
+
+#### Next Steps
+- Proceed to Task 2.2: Implement User Profile Management
+- Create user profile Redux slice
+- Implement account settings page
+- Implement profile update functionality
+- Implement API key management
+- Set up avatar upload with Supabase Storage
+
 ## Technical Debt and Known Issues
 
 - Need to address TypeScript 'any' types in i18n configuration
@@ -452,6 +506,7 @@ src/
 - Need to implement the database schema in Supabase
 - Need to copy and adapt more Materio components
 - Need to implement user profile management
+- Need to fix TypeScript 'any' types in PricingSection component - FIXED
 
 ## Reference Documents
 

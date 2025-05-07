@@ -315,6 +315,37 @@ We are following the Claude Task Master methodology for task management:
   - ✓ Image prompts are detailed enough for third-party AI generation
 - **Notes:** Completely redesigned the landing page with a more sophisticated, component-based architecture. Added animations, transitions, and visual effects to improve user experience. Implemented intersection observer for scroll-based animations. Added new sections: testimonials, statistics, and pricing. Enhanced existing sections with more visual elements and better layout. Created detailed image prompts for all required visual assets. Ensured responsive design across all device sizes. Maintained internationalization support for both English and Vietnamese.
 
+### Task 2.1.3: Fix Landing Page Issues
+- **Status:** Completed
+- **Description:** Fix issues with the landing page including image paths, i18n implementation, and MUI Grid components
+- **Sub-tasks:**
+  - [x] Fix i18n implementation to properly load dictionaries
+  - [x] Update image paths to use correct directories
+  - [x] Fix MUI Grid components to use Grid v2
+  - [x] Fix CSS and layout issues
+  - [x] Fix hydration issues with server/client rendering
+- **Files Created/Modified:**
+  - `src/utils/i18n.ts` - Fixed i18n implementation to properly load dictionaries
+  - `src/configs/i18n.ts` - Removed duplicate functionality
+  - `src/components/LanguageSwitcher.tsx` - Updated to handle locale changes correctly
+  - `src/app/landing/components/Header.tsx` - Fixed navigation menu items and logo
+  - `src/app/landing/components/HeroSection.tsx` - Fixed image paths
+  - `src/app/landing/components/FeaturesSection.tsx` - Fixed image paths
+  - `src/app/landing/components/HowItWorksSection.tsx` - Fixed image paths and Grid components
+  - `src/app/landing/components/TestimonialsSection.tsx` - Fixed image paths
+  - `src/app/landing/components/StatsSection.tsx` - Fixed image paths and Grid components
+  - `src/app/landing/components/Footer.tsx` - Fixed Grid components and logo
+  - `src/app/landing/components/PricingSection.tsx` - Fixed TypeScript types and deprecated props
+  - `src/app/landing/components/CTASection.tsx` - Fixed duplicate opacity property
+- **Human Validation Point:** Confirm landing page displays correctly with proper images, translations, and responsive layout
+- **Acceptance Criteria:**
+  - ✓ i18n is working correctly with proper translations
+  - ✓ Images are displaying correctly from the proper paths
+  - ✓ MUI Grid components are updated to use proper Grid API
+  - ✓ Layout is responsive and displays correctly on all device sizes
+  - ✓ No hydration issues between server and client rendering
+- **Notes:** Fixed several issues with the landing page. Updated the i18n implementation to properly load dictionaries and handle locale changes. Fixed image paths to use the correct directories. Updated MUI Grid components to use the standard Grid API with size prop instead of xs, sm, md props according to the migration guide. Fixed CSS and layout issues to ensure proper display on all device sizes. Fixed hydration issues by ensuring consistent rendering between server and client. Added TypeScript types to PricingCard component to fix 'any' type warnings. Fixed deprecated primaryTypographyProps in PricingSection by using Typography component directly. Fixed duplicate opacity property in CTASection. Fixed ref handling in components using Intersection Observer.
+
 ### Task 2.2: Implement User Profile Management
 - **Status:** To Do
 - **Description:** Implement user profile management functionality
@@ -644,7 +675,7 @@ We are following the Claude Task Master methodology for task management:
 ## Current Status Summary
 
 - **Phase 1:** Completed (Tasks 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, and 1.7 completed)
-- **Phase 2:** In Progress (Task 2.1 completed, Task 2.2 not started)
+- **Phase 2:** In Progress (Tasks 2.1, 2.1.1, 2.1.2, and 2.1.3 completed, Task 2.2 not started)
 - **Phase 3:** Not Started
 - **Phase 4:** Not Started
 - **Phase 5:** Not Started
@@ -732,6 +763,8 @@ Based on analysis of the current codebase and the requirements in the technical 
 - [x] ✓ Confirm directory structure matches the technical specification
 - [x] ✓ Confirm layouts and navigation are working properly
 - [x] ✓ Confirm internationalization (i18n) is working with language switching
+- [x] ✓ Confirm enhanced landing page design matches the sample and provides a better user experience
+- [x] ✓ Confirm landing page displays correctly with proper images, translations, and responsive layout
 
 ## Decision Log
 
@@ -745,4 +778,5 @@ Based on analysis of the current codebase and the requirements in the technical 
 | April 30, 2025 | Use latest Google Genai SDK | Access to the newest AI features | Enables more advanced AI capabilities in the application |
 | April 30, 2025 | Update all dependencies to latest compatible versions | Ensure security and access to newest features | Improves application stability and performance |
 | April 30, 2025 | Create CODE_MODIFICATION_LOG.md | Track all code changes and dependency updates | Provides clear documentation of development history |
-| May 2, 2025 | Implement client-side i18n with localStorage persistence | Simplify internationalization implementation while maintaining functionality | Provides a robust i18n solution without complex server-side configuration
+| May 2, 2025 | Implement client-side i18n with localStorage persistence | Simplify internationalization implementation while maintaining functionality | Provides a robust i18n solution without complex server-side configuration |
+| May 5, 2025 | Update MUI Grid components to use Grid v2 | Follow MUI migration guide for Grid v2 | Ensures compatibility with latest MUI version and improves layout capabilities

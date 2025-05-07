@@ -204,18 +204,19 @@ Updated dependencies to latest compatible versions:
 
 ## May 15, 2025
 
-### Landing Page Redesign
+### Landing Page Redesign and MUI Grid v2 Migration
 
 #### Files Modified
 - src/app/landing/components/FeaturesSection.tsx - Redesigned to match reference design
-- src/app/landing/components/HowItWorksSection.tsx - Redesigned to match reference design
-- src/app/landing/components/TestimonialsSection.tsx - Redesigned to match reference design
-- src/app/landing/components/StatsSection.tsx - Redesigned to match reference design
+- src/app/landing/components/HowItWorksSection.tsx - Redesigned to match reference design and updated to fix ref issues
+- src/app/landing/components/TestimonialsSection.tsx - Redesigned to match reference design and fixed image paths
+- src/app/landing/components/StatsSection.tsx - Redesigned to match reference design and migrated to Grid v2
 - src/data/dictionaries/vi.json - Updated with new translation keys
 - LANDING_PAGE_IMPROVEMENTS.md - Created comprehensive redesign plan
 - CONTEXT_DIARY.md - Updated with current status and redesign plan
 - NEXT_TASKS.md - Updated with new task for landing page redesign
 - COMMIT_MESSAGE.md - Updated with changes and next steps
+- TASK_TRACKING.md - Updated with new task for landing page fixes
 
 #### Implementation Details
 - Redesigned FeaturesSection with vertical card layout and 3-column grid
@@ -226,6 +227,10 @@ Updated dependencies to latest compatible versions:
 - Created a comprehensive redesign plan to match the reference design
 - Prioritized actions to address the most critical issues first
 - Defined success criteria for the redesign
+- Migrated MUI Grid components to Grid v2 following the official migration guide
+- Fixed image paths to use the correct directories from Materio
+- Fixed ref issues in components using Intersection Observer
+- Updated TASK_TRACKING.md with new task for landing page fixes
 
 #### Key Changes to FeaturesSection
 - Changed from horizontal to vertical card layout with centered content
@@ -261,6 +266,16 @@ Updated dependencies to latest compatible versions:
 - Added gradient overlay and decorative elements to the image
 - Improved typography and spacing for better readability
 - Enhanced background elements with additional decorative elements
+- Migrated from MUI Grid v1 to Grid v2 for better layout control
+
+#### MUI Grid v2 Migration
+- Initially attempted to use `import Grid from '@mui/material/Unstable_Grid2'` but encountered compatibility issues
+- Reverted to using `import Grid from '@mui/material/Grid'` with the standard Grid API
+- Changed the spread syntax `{...{ item: true, xs: 12, md: 6 }}` to direct props `item xs={12} md={6}`
+- Fixed ref handling in components using Intersection Observer to avoid React warnings
+- Updated image paths to use the correct directories from Materio
+- Fixed unused variables and imports to clean up the code
+- Removed deprecated `paragraph` prop from Typography components
 
 #### Research Notes
 - Analyzed the reference design for layout patterns and visual hierarchy
@@ -271,6 +286,10 @@ Updated dependencies to latest compatible versions:
 - Studied video showcase sections in modern landing pages
 - Researched 3D transform effects for image presentation
 - Studied testimonial design patterns in modern websites
+- Researched MUI Grid v2 migration guide for proper implementation
+- Investigated React useRef best practices for cleanup functions
+- Studied Intersection Observer API for proper implementation with React refs
+- Analyzed Materio directory structure for correct image paths
 
 #### References
 - Modern Landing Page Designs: https://www.awwwards.com/websites/landing-page/
@@ -280,3 +299,42 @@ Updated dependencies to latest compatible versions:
 - Video Showcase Best Practices: https://webflow.com/blog/video-background-website
 - CSS 3D Transforms: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/perspective
 - Testimonial Design Patterns: https://www.smashingmagazine.com/2019/01/designing-testimonials-focusing-trust-social-proof/
+- MUI Grid Documentation: https://mui.com/material-ui/api/grid/
+- React useRef Hook and Cleanup: https://react.dev/reference/react/useRef#avoiding-recreating-the-ref-contents
+- Intersection Observer API: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+
+## May 16, 2025
+
+### MUI Grid v2 Migration Fixes and Component Improvements
+
+#### Files Modified
+- src/app/landing/components/Footer.tsx - Fixed Grid import
+- src/app/landing/components/StatsSection.tsx - Updated Grid components to use size prop instead of xs, sm, md props
+- src/app/landing/components/PricingSection.tsx - Updated Grid components to use size prop, added TypeScript types, fixed deprecated primaryTypographyProps
+- src/app/landing/components/CTASection.tsx - Fixed duplicate opacity property
+- CONTEXT_DIARY.md - Updated with details of the changes
+- CODE_MODIFICATION_LOG.md - Updated with details of the changes
+
+#### Implementation Details
+- Fixed Grid import in Footer component to properly include Grid from @mui/material
+- Updated Grid components in StatsSection to use size prop instead of xs, sm, md props
+- Updated Grid components in PricingSection to use size prop instead of xs, sm, md props
+- Added TypeScript types to PricingCard component to fix 'any' type warnings
+- Fixed deprecated primaryTypographyProps in PricingSection by using Typography component directly
+- Fixed duplicate opacity property in CTASection
+- Fixed ref handling in components using Intersection Observer
+- Removed unused variables in PricingSection
+
+#### Research Notes
+- Studied MUI Grid v2 migration guide for proper implementation
+- Investigated TypeScript interface best practices for component props
+- Researched Material UI Typography component best practices
+- Analyzed React useRef best practices for cleanup functions
+- Studied Intersection Observer API for proper implementation with React refs
+
+#### References
+- MUI Grid v2 Migration Guide: https://mui.com/material-ui/migration/upgrade-to-grid-v2/
+- TypeScript Interface Best Practices: https://www.typescriptlang.org/docs/handbook/interfaces.html
+- Material UI Typography: https://mui.com/material-ui/api/typography/
+- React useRef Hook: https://react.dev/reference/react/useRef
+- Intersection Observer API: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API

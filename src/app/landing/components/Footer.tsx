@@ -6,14 +6,14 @@ import {
   Typography,
   Box,
   Container,
-  Grid,
   Divider,
   IconButton,
   useTheme,
   alpha,
   useMediaQuery,
   Paper,
-  Button
+  Button,
+  Grid
 } from '@mui/material'
 import {
   Facebook,
@@ -246,7 +246,9 @@ const Footer: React.FC = () => {
               >
                 <Box
                   component="img"
-                  src="/images/logo.png"
+                  src={theme.palette.mode === 'light'
+                    ? "/logo/Logo-dark.svg"
+                    : "/logo/Logo-light.svg"}
                   alt="Logo"
                   sx={{
                     width: { xs: 32, sm: 36, md: 40 },
@@ -342,12 +344,10 @@ const Footer: React.FC = () => {
             <Grid container spacing={{ xs: 3, md: 4 }}>
               {footerLinks.map((section, index) => (
                 <Grid
+                  item
                   key={index}
-                  {...{
-                    item: true,
-                    xs: 12,
-                    sm: 4
-                  }}
+                  xs={12}
+                  sm={4}
                 >
                   <Typography
                     variant="h6"

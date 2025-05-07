@@ -115,10 +115,26 @@ const Header = () => {
 
   // Navigation links with icons
   const navLinks = [
-    { text: t('landing.featuresSection.title'), href: "#features", icon: <LightbulbIcon fontSize="small" /> },
-    { text: t('landing.howItWorks.title'), href: "#how-it-works", icon: <SchoolIcon fontSize="small" /> },
-    { text: t('landing.testimonialsSection.title'), href: "#testimonials", icon: <GroupIcon fontSize="small" /> },
-    { text: t('landing.statsSection.title'), href: "#stats", icon: <DevicesIcon fontSize="small" /> }
+    {
+      text: mounted ? t('landing.featuresSection.title') : 'Our Features',
+      href: "#features",
+      icon: <LightbulbIcon fontSize="small" />
+    },
+    {
+      text: mounted ? t('landing.howItWorks.title') : 'How It Works',
+      href: "#how-it-works",
+      icon: <SchoolIcon fontSize="small" />
+    },
+    {
+      text: mounted ? t('landing.testimonialsSection.title') : 'Testimonials',
+      href: "#testimonials",
+      icon: <GroupIcon fontSize="small" />
+    },
+    {
+      text: mounted ? t('landing.statsSection.title') : 'Our Impact',
+      href: "#stats",
+      icon: <DevicesIcon fontSize="small" />
+    }
   ]
 
   // Get background styles based on theme and scroll state
@@ -296,7 +312,7 @@ const Header = () => {
                 gap: { xs: 1, sm: 2, md: 2 }
               }}>
                 <ThemeToggle color={getTextColor()} />
-                <LanguageSwitcher color={scrolled ? 'primary' : 'white'} />
+                <LanguageSwitcher color={scrolled ? 'primary' : 'inherit'} />
 
                 {!isTablet ? (
                   <>

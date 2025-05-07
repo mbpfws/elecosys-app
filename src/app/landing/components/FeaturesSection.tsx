@@ -363,42 +363,42 @@ const FeaturesSection: React.FC = () => {
       title: t('landing.features.writingTools.title'),
       description: t('landing.features.writingTools.description'),
       iconColor: '#FF5C8D', // Pink
-      imagePath: '/images/landing/1.png'
+      imagePath: '/images/illustrations/characters/1.png'
     },
     {
       icon: <Quiz />,
       title: t('landing.features.adaptiveTest.title'),
       description: t('landing.features.adaptiveTest.description'),
       iconColor: '#7C4DFF', // Purple
-      imagePath: '/images/landing/2.png'
+      imagePath: '/images/illustrations/characters/2.png'
     },
     {
       icon: <Chat />,
       title: t('landing.features.aiTutor.title'),
       description: t('landing.features.aiTutor.description'),
       iconColor: '#00BFA5', // Teal
-      imagePath: '/images/landing/3.png'
+      imagePath: '/images/illustrations/characters/3.png'
     },
     {
       icon: <Language />,
       title: t('landing.features.vietnamese.title'),
       description: t('landing.features.vietnamese.description'),
       iconColor: '#FF9100', // Orange
-      imagePath: '/images/landing/4.png'
+      imagePath: '/images/illustrations/characters/4.png'
     },
     {
       icon: <School />,
       title: t('landing.features.structured.title'),
       description: t('landing.features.structured.description'),
       iconColor: '#2979FF', // Blue
-      imagePath: '/images/landing/5.png'
+      imagePath: '/images/illustrations/characters/5.png'
     },
     {
       icon: <TrendingUp />,
       title: t('landing.features.progress.title'),
       description: t('landing.features.progress.description'),
       iconColor: '#F50057', // Pink/Red
-      imagePath: '/images/landing/6.png'
+      imagePath: '/images/illustrations/characters/6.png'
     }
   ]
 

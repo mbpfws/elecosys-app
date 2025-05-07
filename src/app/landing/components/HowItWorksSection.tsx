@@ -5,11 +5,9 @@ import {
   Typography,
   Box,
   Container,
-  Grid,
   Paper,
   useTheme,
   alpha,
-  useMediaQuery,
   Avatar
 } from '@mui/material'
 import { useTranslation } from '@/utils/i18n'
@@ -24,7 +22,6 @@ interface StepProps {
 
 const Step: React.FC<StepProps> = ({ number, title, description, index, isVisible }) => {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
     <Box
@@ -70,7 +67,7 @@ const Step: React.FC<StepProps> = ({ number, title, description, index, isVisibl
         {/* Illustration for each step */}
         <Box
           component="img"
-          src={`/images/landing/how-it-works-${number}.png`}
+          src={`/images/illustrations/characters/${number}.png`}
           alt={`Step ${number} illustration`}
           sx={{
             width: { xs: '120px', sm: '140px', md: '160px' },
@@ -131,7 +128,7 @@ const Step: React.FC<StepProps> = ({ number, title, description, index, isVisibl
         {/* Mobile illustration */}
         <Box
           component="img"
-          src={`/images/landing/how-it-works-${number}.png`}
+          src={`/images/illustrations/characters/${number}.png`}
           alt={`Step ${number} illustration`}
           sx={{
             width: '100%',
@@ -183,14 +180,13 @@ const HowItWorksSection: React.FC = () => {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.disconnect()
-      }
+      observer.disconnect()
     }
   }, [])
 
@@ -413,7 +409,7 @@ const HowItWorksSection: React.FC = () => {
           >
             <Box
               component="img"
-              src="/images/landing/platform-interface.jpg"
+              src="/images/front-pages/landing-page/hero-dashboard-dark.png"
               alt="Platform interface showcase"
               sx={{
                 width: '100%',

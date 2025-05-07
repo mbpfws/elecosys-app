@@ -315,8 +315,8 @@
     },
     "features": {
       "writingTools": {
-        "title": "AI Writing Tools",
-        "description": "Practice IELTS writing tasks with AI-generated prompts and receive detailed feedback on your essays"
+        "title": "Modular AI Tools",
+        "description": "Deeply integrated AI tools that connect with community features and learning accounts - specialized for IELTS preparation"
       },
       "adaptiveTest": {
         "title": "Adaptive Testing",
@@ -327,8 +327,8 @@
         "description": "Get instant answers to your questions about English grammar, vocabulary, or IELTS strategies"
       },
       "vietnamese": {
-        "title": "Vietnamese Interface",
-        "description": "Navigate the platform easily with a fully localized Vietnamese interface"
+        "title": "E-Learning Ecosystem",
+        "description": "A comprehensive platform emphasizing community features, multiple roles, integration, and democratized education"
       },
       "structured": {
         "title": "Structured Learning",

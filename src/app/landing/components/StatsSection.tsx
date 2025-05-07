@@ -5,12 +5,10 @@ import {
   Typography,
   Box,
   Container,
-  Grid,
   Paper,
   useTheme,
   alpha,
-  useMediaQuery,
-  Divider
+  Grid
 } from '@mui/material'
 import { useTranslation } from '@/utils/i18n'
 // We'll implement our own simple counter
@@ -31,7 +29,7 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, suffix = '', index, i
   useEffect(() => {
     if (!isVisible) return
 
-    let start = 0
+    // Start counter from 0
     const duration = 2000 // 2 seconds
     const frameDuration = 1000 / 60 // 60fps
     const totalFrames = Math.round(duration / frameDuration)
@@ -141,7 +139,6 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, suffix = '', index, i
 const StatsSection: React.FC = () => {
   const { t } = useTranslation()
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -156,14 +153,13 @@ const StatsSection: React.FC = () => {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.disconnect()
-      }
+      observer.disconnect()
     }
   }, [])
 
@@ -341,12 +337,7 @@ const StatsSection: React.FC = () => {
           {stats.map((stat, index) => (
             <Grid
               key={index}
-              {...{
-                item: true,
-                xs: 12,
-                sm: 6,
-                md: 3
-              }}
+              size={{ xs: 12, sm: 6, md: 3 }}
             >
               <StatItem
                 value={stat.value}
@@ -371,11 +362,7 @@ const StatsSection: React.FC = () => {
         >
           <Grid container spacing={{ xs: 5, md: 8 }} alignItems="center">
             <Grid
-              {...{
-                item: true,
-                xs: 12,
-                md: 6
-              }}
+              size={{ xs: 12, md: 6 }}
             >
               <Box
                 sx={{
@@ -392,7 +379,7 @@ const StatsSection: React.FC = () => {
               >
                 <Box
                   component="img"
-                  src="/images/landing/impact-illustration.png"
+                  src="/images/front-pages/landing-page/hero-elements-dark.png"
                   alt="Our impact illustration"
                   sx={{
                     width: '100%',
@@ -433,11 +420,7 @@ const StatsSection: React.FC = () => {
             </Grid>
 
             <Grid
-              {...{
-                item: true,
-                xs: 12,
-                md: 6
-              }}
+              size={{ xs: 12, md: 6 }}
             >
               <Box
                 sx={{
@@ -490,7 +473,6 @@ const StatsSection: React.FC = () => {
 
                 <Typography
                   variant="body1"
-                  paragraph
                   sx={{
                     mb: 4,
                     fontSize: { xs: '1.0625rem', md: '1.125rem' },

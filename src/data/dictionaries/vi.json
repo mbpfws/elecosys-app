@@ -314,8 +314,8 @@
     },
     "features": {
       "writingTools": {
-        "title": "Công Cụ Viết AI",
-        "description": "Luyện tập các bài thi viết IELTS với đề bài được tạo bởi AI và nhận phản hồi chi tiết về bài luận của bạn"
+        "title": "Công Cụ AI Mô-đun",
+        "description": "Các công cụ AI tích hợp sâu kết nối với tính năng cộng đồng và tài khoản học tập - chuyên biệt cho việc chuẩn bị IELTS"
       },
       "adaptiveTest": {
         "title": "Kiểm Tra Thích Ứng",
@@ -326,8 +326,8 @@
         "description": "Nhận câu trả lời ngay lập tức cho các câu hỏi về ngữ pháp tiếng Anh, từ vựng hoặc chiến lược IELTS"
       },
       "vietnamese": {
-        "title": "Giao Diện Tiếng Việt",
-        "description": "Điều hướng nền tảng dễ dàng với giao diện tiếng Việt hoàn toàn"
+        "title": "Hệ Sinh Thái E-Learning",
+        "description": "Nền tảng toàn diện nhấn mạnh tính năng cộng đồng, đa vai trò, tích hợp và dân chủ hóa giáo dục"
       },
       "structured": {
         "title": "Học Tập Có Cấu Trúc",
@@ -361,6 +361,77 @@
     "testimonialsSection": {
       "title": "Đánh Giá Từ Học Viên",
       "subtitle": "Xem những gì học viên của chúng tôi nói về trải nghiệm học tập của họ"
+    },
+    "testimonials": {
+      "person1": {
+        "name": "Nguyễn Văn A",
+        "role": "Học Viên IELTS",
+        "quote": "Phản hồi viết được hỗ trợ bởi AI đã giúp tôi cải thiện điểm IELTS từ 6.5 lên 7.5 chỉ trong hai tháng. Phân tích chi tiết về các bài luận của tôi rất hữu ích."
+      },
+      "person2": {
+        "name": "Trần Thị B",
+        "role": "Sinh Viên Đại Học",
+        "quote": "Tính năng kiểm tra thích ứng thật tuyệt vời! Nó điều chỉnh theo trình độ của tôi và giúp tôi tập trung vào các lĩnh vực cần cải thiện. Vốn từ vựng của tôi đã mở rộng đáng kể."
+      },
+      "person3": {
+        "name": "Lê Văn C",
+        "role": "Người Đi Làm",
+        "quote": "Tôi yêu thích trò chuyện với trợ giảng AI. Giống như có một giáo viên tiếng Anh cá nhân luôn sẵn sàng 24/7. Giao diện tiếng Việt giúp dễ dàng điều hướng và hiểu rõ."
+      }
+    },
+    "pricingSection": {
+      "title": "Gói Dịch Vụ",
+      "subtitle": "Chọn gói phù hợp nhất với nhu cầu học tập của bạn"
+    },
+    "pricing": {
+      "monthly": "Hàng tháng",
+      "annual": "Hàng năm",
+      "perMonth": "mỗi tháng",
+      "savePercent": "Tiết kiệm 25%",
+      "popular": "PHỔ BIẾN",
+      "freeTrial": "Tất cả các gói bao gồm dùng thử miễn phí 14 ngày. Không cần thẻ tín dụng.",
+      "free": {
+        "title": "Miễn Phí",
+        "ctaText": "Bắt Đầu",
+        "features": {
+          "writingFeedback": "Phản hồi viết cơ bản",
+          "adaptiveTests": "Bài kiểm tra thích ứng giới hạn",
+          "aiTutor": "Trò chuyện với trợ giảng AI cơ bản",
+          "progressTracking": "Theo dõi tiến độ",
+          "vietnameseInterface": "Giao diện tiếng Việt",
+          "advancedWriting": "Phân tích viết nâng cao",
+          "unlimitedTests": "Bài kiểm tra thích ứng không giới hạn",
+          "prioritySupport": "Hỗ trợ ưu tiên"
+        }
+      },
+      "premium": {
+        "title": "Cao Cấp",
+        "ctaText": "Chọn Cao Cấp",
+        "features": {
+          "writingFeedback": "Phản hồi viết nâng cao",
+          "adaptiveTests": "Bài kiểm tra thích ứng không giới hạn",
+          "aiTutor": "Truy cập đầy đủ trợ giảng AI",
+          "progressTracking": "Phân tích tiến độ chi tiết",
+          "vietnameseInterface": "Giao diện tiếng Việt",
+          "speakingPractice": "Công cụ luyện nói",
+          "studyPlan": "Kế hoạch học tập cá nhân hóa",
+          "prioritySupport": "Hỗ trợ ưu tiên"
+        }
+      },
+      "standard": {
+        "title": "Tiêu Chuẩn",
+        "ctaText": "Chọn Tiêu Chuẩn",
+        "features": {
+          "writingFeedback": "Phản hồi viết nâng cao",
+          "adaptiveTests": "Bài kiểm tra thích ứng mở rộng",
+          "aiTutor": "Truy cập trợ giảng AI tiêu chuẩn",
+          "progressTracking": "Theo dõi tiến độ nâng cao",
+          "vietnameseInterface": "Giao diện tiếng Việt",
+          "speakingPractice": "Công cụ luyện nói",
+          "studyPlan": "Kế hoạch học tập cá nhân hóa",
+          "prioritySupport": "Hỗ trợ ưu tiên"
+        }
+      }
     },
     "statsSection": {
       "title": "Tác Động Của Chúng Tôi",

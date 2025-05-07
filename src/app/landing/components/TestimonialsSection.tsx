@@ -152,7 +152,8 @@ const TestimonialsSection: React.FC = () => {
   const theme = useTheme()
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [activeIndex, setActiveIndex] = useState(0)
+  // For mobile carousel navigation
+  const [_activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -165,39 +166,38 @@ const TestimonialsSection: React.FC = () => {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.disconnect()
-      }
+      observer.disconnect()
     }
   }, [])
 
-  // Sample testimonials data
+  // Testimonials data with translations
   const testimonials: Testimonial[] = [
     {
-      name: "Nguyen Van A",
-      role: "IELTS Student",
-      avatar: "/images/landing/testimonial-1.jpg",
+      name: t('landing.testimonials.person1.name') || "Nguyen Van A",
+      role: t('landing.testimonials.person1.role') || "IELTS Student",
+      avatar: "/images/illustrations/characters/1.png",
       rating: 5,
-      testimonial: "The AI-powered writing feedback helped me improve my IELTS score from 6.5 to 7.5 in just two months. The detailed analysis of my essays was incredibly helpful."
+      testimonial: t('landing.testimonials.person1.quote') || "The AI-powered writing feedback helped me improve my IELTS score from 6.5 to 7.5 in just two months. The detailed analysis of my essays was incredibly helpful."
     },
     {
-      name: "Tran Thi B",
-      role: "University Student",
-      avatar: "/images/landing/testimonial-2.jpg",
+      name: t('landing.testimonials.person2.name') || "Tran Thi B",
+      role: t('landing.testimonials.person2.role') || "University Student",
+      avatar: "/images/illustrations/characters/2.png",
       rating: 4.5,
-      testimonial: "The adaptive testing feature is amazing! It adjusts to my level and helps me focus on areas where I need improvement. My vocabulary has expanded significantly."
+      testimonial: t('landing.testimonials.person2.quote') || "The adaptive testing feature is amazing! It adjusts to my level and helps me focus on areas where I need improvement. My vocabulary has expanded significantly."
     },
     {
-      name: "Le Van C",
-      role: "Working Professional",
-      avatar: "/images/landing/testimonial-3.jpg",
+      name: t('landing.testimonials.person3.name') || "Le Van C",
+      role: t('landing.testimonials.person3.role') || "Working Professional",
+      avatar: "/images/illustrations/characters/3.png",
       rating: 5,
-      testimonial: "I love the AI tutor chat. It's like having a personal English teacher available 24/7. The Vietnamese interface makes it easy to navigate and understand."
+      testimonial: t('landing.testimonials.person3.quote') || "I love the AI tutor chat. It's like having a personal English teacher available 24/7. The Vietnamese interface makes it easy to navigate and understand."
     }
   ]
 

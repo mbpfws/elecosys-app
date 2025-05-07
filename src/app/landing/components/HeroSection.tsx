@@ -144,8 +144,8 @@ const HeroSection = () => {
         className={styles.heroBg}
         sx={{
           backgroundImage: mode === 'light'
-            ? `url('/images/landing/hero-bg-light.png')`
-            : `url('/images/landing/hero-bg-dark.png')`,
+            ? `url('/images/front-pages/landing-page/hero-bg-light.png')`
+            : `url('/images/front-pages/landing-page/hero-bg-dark.png')`,
           opacity: 0.95,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -291,8 +291,8 @@ const HeroSection = () => {
                   <Box
                     component="img"
                     src={mode === 'light'
-                      ? "/images/landing/hero-dashboard-light.png"
-                      : "/images/landing/hero-dashboard-dark.png"}
+                      ? "/images/front-pages/landing-page/hero-dashboard-light.png"
+                      : "/images/front-pages/landing-page/hero-dashboard-dark.png"}
                     alt="E-Learning Platform Interface"
                     sx={{
                       width: '100%',
@@ -328,8 +328,8 @@ const HeroSection = () => {
                     <Box
                       component="img"
                       src={mode === 'light'
-                        ? "/images/landing/hero-elements-dark.png"
-                        : "/images/landing/hero-elements-dark.png"}
+                        ? "/images/front-pages/landing-page/hero-elements-light.png"
+                        : "/images/front-pages/landing-page/hero-elements-dark.png"}
                       alt="Writing Feature"
                       sx={{
                         width: { xs: '60px', sm: '80px', md: '100px' },
@@ -352,7 +352,7 @@ const HeroSection = () => {
                   >
                     <Box
                       component="img"
-                      src="/images/landing/sitting-girl-with-laptop.png"
+                      src="/images/front-pages/landing-page/sitting-girl-with-laptop.png"
                       alt="AI Tutor Feature"
                       sx={{
                         width: { xs: '80px', sm: '100px', md: '120px' },
@@ -375,7 +375,7 @@ const HeroSection = () => {
                   >
                     <Box
                       component="img"
-                      src="/images/landing/1.png"
+                      src="/images/illustrations/characters/1.png"
                       alt="Learning Feature"
                       sx={{
                         width: { xs: '70px', sm: '90px', md: '110px' },
@@ -398,7 +398,7 @@ const HeroSection = () => {
                   >
                     <Box
                       component="img"
-                      src="/images/landing/3.png"
+                      src="/images/illustrations/characters/3.png"
                       alt="Community Feature"
                       sx={{
                         width: { xs: '65px', sm: '85px', md: '105px' },

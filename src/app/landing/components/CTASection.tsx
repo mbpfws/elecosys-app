@@ -32,14 +32,13 @@ const CTASection = () => {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.disconnect()
-      }
+      observer.disconnect()
     }
   }, [])
 
@@ -61,6 +60,9 @@ const CTASection = () => {
           right: 0,
           bottom: 0,
           background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+          backgroundImage: `url('/images/landing/cta-bg.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
           zIndex: -2,
         }}
       />
@@ -181,13 +183,11 @@ const CTASection = () => {
 
         <Typography
           variant="h6"
-          paragraph
           sx={{
             mb: { xs: 5, sm: 6 },
-            opacity: 0.9,
             maxWidth: '800px',
             mx: 'auto',
-            opacity: isVisible ? 1 : 0,
+            opacity: isVisible ? 0.9 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
             transition: 'all 0.6s ease',
             transitionDelay: '0.1s',
@@ -238,7 +238,6 @@ const CTASection = () => {
           <Typography
             variant="body2"
             sx={{
-              opacity: 0.8,
               fontSize: { xs: '0.875rem', sm: '0.9375rem' },
               px: 2,
               py: 1,

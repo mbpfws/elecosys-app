@@ -7,7 +7,7 @@ import { useTranslation } from '@/utils/i18n'
 import { localeNames } from '@/configs/i18n'
 
 interface LanguageSwitcherProps {
-  color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | string;
+  color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
   iconOnly?: boolean;
 }
 
