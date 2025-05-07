@@ -10,15 +10,21 @@ const LANGUAGE_KEY = 'app_language';
 
 // Export a custom hook to use i18n in components
 export const useTranslation = () => {
-  // Initialize locale from localStorage if available, otherwise use default
-  const [locale, setLocale] = useState<string>(() => {
+  // Initialize with default locale for server-side rendering
+  const [locale, setLocale] = useState<string>(defaultLocale);
+  const [isClient, setIsClient] = useState(false);
+
+  // Initialize locale from localStorage after component mounts
+  useEffect(() => {
+    setIsClient(true);
     // Only access localStorage on the client side
     if (typeof window !== 'undefined') {
       const savedLocale = localStorage.getItem(LANGUAGE_KEY);
-      return savedLocale && locales.includes(savedLocale) ? savedLocale : defaultLocale;
+      if (savedLocale && locales.includes(savedLocale)) {
+        setLocale(savedLocale);
+      }
     }
-    return defaultLocale;
-  });
+  }, []);
 
   const { t } = useI18n(locale);
 
@@ -42,10 +48,12 @@ export const useTranslation = () => {
 
   // Load dictionary on mount and when locale changes
   useEffect(() => {
-    loadDictionary(locale).then(() => {
-      console.log(`Loaded dictionary for ${locale}`);
-    });
-  }, [locale]);
+    if (isClient) {
+      loadDictionary(locale).then(() => {
+        console.log(`Loaded dictionary for ${locale}`);
+      });
+    }
+  }, [locale, isClient]);
 
   return {
     t,

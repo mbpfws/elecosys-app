@@ -1,12 +1,17 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Button, Menu, MenuItem, Badge } from '@mui/material'
+import { Button, Menu, MenuItem, Badge, IconButton } from '@mui/material'
 import LanguageIcon from '@mui/icons-material/Language'
 import { useTranslation } from '@/utils/i18n'
 import { localeNames } from '@/configs/i18n'
 
-const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | string;
+  iconOnly?: boolean;
+}
+
+const LanguageSwitcher = ({ color = 'inherit', iconOnly = false }: LanguageSwitcherProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const { t, currentLocale, changeLocale } = useTranslation()
   const [mounted, setMounted] = useState(false)
@@ -30,21 +35,50 @@ const LanguageSwitcher = () => {
     handleClose()
   }
 
+  // Server-side rendering fallback
   if (!mounted) {
-    return null
+    // Return a placeholder with the same dimensions to prevent layout shift
+    return iconOnly ? (
+      <IconButton
+        color={color}
+        sx={{ visibility: 'hidden' }}
+      >
+        <LanguageIcon />
+      </IconButton>
+    ) : (
+      <Button
+        color={color}
+        startIcon={<LanguageIcon />}
+        size="small"
+        sx={{ textTransform: 'none', visibility: 'hidden' }}
+      >
+        {/* Use a static placeholder to avoid hydration mismatch */}
+        Language
+      </Button>
+    );
   }
 
   return (
     <>
-      <Button
-        color="inherit"
-        startIcon={<LanguageIcon />}
-        onClick={handleClick}
-        size="small"
-        sx={{ textTransform: 'none' }}
-      >
-        {localeNames[currentLocale as keyof typeof localeNames]}
-      </Button>
+      {iconOnly ? (
+        <IconButton
+          color={color}
+          onClick={handleClick}
+          size="small"
+        >
+          <LanguageIcon />
+        </IconButton>
+      ) : (
+        <Button
+          color={color}
+          startIcon={<LanguageIcon />}
+          onClick={handleClick}
+          size="small"
+          sx={{ textTransform: 'none' }}
+        >
+          {localeNames[currentLocale as keyof typeof localeNames] || 'Language'}
+        </Button>
+      )}
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
