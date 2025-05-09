@@ -1,43 +1,46 @@
 // MUI Imports
-import { alpha, createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes, Shadows } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
+import { Inter } from 'next/font/google';
 
-// Define the theme interface
-interface CustomTheme {
-  customShadows: {
-    primary: string;
-    secondary: string;
-    info: string;
-    success: string;
-    warning: string;
-    error: string;
-    card: string;
-    cardHover: string;
-    buttonHover: string;
-    z1: string;
-    z2: string;
-    z3: string;
-  };
-  customGradients: {
-    primary: string;
-    secondary: string;
-    info: string;
-    success: string;
-    warning: string;
-    error: string;
-    purple: string;
-    blue: string;
-    orange: string;
-    green: string;
-    dark: string;
-    light: string;
-  };
-  customAnimations: {
-    fast: string;
-    medium: string;
-    slow: string;
-  };
+// Extend the palette types to match Materio theme approach
+declare module '@mui/material/styles' {
+  interface PaletteColor {
+    lighterOpacity?: string;
+    lightOpacity?: string;
+    mainOpacity?: string;
+    darkOpacity?: string;
+    darkerOpacity?: string;
+  }
+  interface SimplePaletteColorOptions {
+    lighterOpacity?: string;
+    lightOpacity?: string;
+    mainOpacity?: string;
+    darkOpacity?: string;
+    darkerOpacity?: string;
+  }
+
+  interface CustomColors {
+    bodyBg: string;
+    chatBg: string;
+    greyLightBg: string;
+    inputBorder: string;
+    tableHeaderBg: string;
+    tooltipText: string;
+    trackBg: string;
+  }
+
+  interface Palette {
+    customColors: CustomColors;
+  }
+
+  interface PaletteOptions {
+    customColors?: Partial<CustomColors>;
+  }
 }
+
+// Load Inter font
+const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700', '800', '900'] });
 
 // Create the theme
 export const createLandingTheme = (mode: PaletteMode) => {
@@ -47,56 +50,184 @@ export const createLandingTheme = (mode: PaletteMode) => {
       mode,
       ...(mode === 'light'
         ? {
-            // Light mode colors
+            // Light mode colors - Aligned with Materio
             primary: {
               main: '#8C57FF',
               light: '#A379FF',
               dark: '#7E4EE6',
               contrastText: '#fff',
+              lighterOpacity: 'rgb(140, 87, 255, 0.08)',
+              lightOpacity: 'rgb(140, 87, 255, 0.16)',
+              mainOpacity: 'rgb(140, 87, 255, 0.24)',
+              darkOpacity: 'rgb(140, 87, 255, 0.32)',
+              darkerOpacity: 'rgb(140, 87, 255, 0.38)',
             },
             secondary: {
-              main: '#FF7A50',
-              light: '#FF9B7B',
-              dark: '#E66A45',
+              main: '#8A8D93',
+              light: '#A1A4A9',
+              dark: '#7C7F84',
               contrastText: '#fff',
+              lighterOpacity: 'rgb(138, 141, 147, 0.08)',
+              lightOpacity: 'rgb(138, 141, 147, 0.16)',
+              mainOpacity: 'rgb(138, 141, 147, 0.24)',
+              darkOpacity: 'rgb(138, 141, 147, 0.32)',
+              darkerOpacity: 'rgb(138, 141, 147, 0.38)',
+            },
+            error: {
+              main: '#FF4C51',
+              light: '#FF7074',
+              dark: '#E64449',
+              contrastText: '#fff',
+              lighterOpacity: 'rgb(255, 76, 81, 0.08)',
+              lightOpacity: 'rgb(255, 76, 81, 0.16)',
+              mainOpacity: 'rgb(255, 76, 81, 0.24)',
+              darkOpacity: 'rgb(255, 76, 81, 0.32)',
+              darkerOpacity: 'rgb(255, 76, 81, 0.38)',
+            },
+            warning: {
+              main: '#FFB400',
+              light: '#FFC333',
+              dark: '#E6A200',
+              contrastText: '#fff',
+              lighterOpacity: 'rgb(255, 180, 0, 0.08)',
+              lightOpacity: 'rgb(255, 180, 0, 0.16)',
+              mainOpacity: 'rgb(255, 180, 0, 0.24)',
+              darkOpacity: 'rgb(255, 180, 0, 0.32)',
+              darkerOpacity: 'rgb(255, 180, 0, 0.38)',
+            },
+            info: {
+              main: '#16B1FF',
+              light: '#45C1FF',
+              dark: '#149FE6',
+              contrastText: '#fff',
+              lighterOpacity: 'rgb(22, 177, 255, 0.08)',
+              lightOpacity: 'rgb(22, 177, 255, 0.16)',
+              mainOpacity: 'rgb(22, 177, 255, 0.24)',
+              darkOpacity: 'rgb(22, 177, 255, 0.32)',
+              darkerOpacity: 'rgb(22, 177, 255, 0.38)',
+            },
+            success: {
+              main: '#56CA00',
+              light: '#78D533',
+              dark: '#4DB600',
+              contrastText: '#fff',
+              lighterOpacity: 'rgb(86, 202, 0, 0.08)',
+              lightOpacity: 'rgb(86, 202, 0, 0.16)',
+              mainOpacity: 'rgb(86, 202, 0, 0.24)',
+              darkOpacity: 'rgb(86, 202, 0, 0.32)',
+              darkerOpacity: 'rgb(86, 202, 0, 0.38)',
             },
             background: {
               default: '#F4F5FA',
               paper: '#FFFFFF',
             },
             text: {
-              primary: '#2A2A42',
-              secondary: '#65657B',
+              primary: 'rgb(46, 38, 61, 0.9)',
+              secondary: 'rgb(46, 38, 61, 0.7)',
+              disabled: 'rgb(46, 38, 61, 0.4)',
             },
-            divider: 'rgba(42, 42, 66, 0.12)',
+            divider: 'rgb(46, 38, 61, 0.12)',
+            customColors: {
+              bodyBg: '#F4F5FA',
+              chatBg: '#F7F6FA',
+              greyLightBg: '#FAFAFA',
+              inputBorder: 'rgb(46, 38, 61, 0.22)',
+              tableHeaderBg: '#F6F7FB',
+              tooltipText: '#FFFFFF',
+              trackBg: '#F0F2F8'
+            }
           }
         : {
-            // Dark mode colors
+            // Dark mode colors - Aligned with Materio
             primary: {
               main: '#8C57FF',
               light: '#A379FF',
               dark: '#7E4EE6',
               contrastText: '#fff',
+              lighterOpacity: 'rgb(140, 87, 255, 0.08)',
+              lightOpacity: 'rgb(140, 87, 255, 0.16)',
+              mainOpacity: 'rgb(140, 87, 255, 0.24)',
+              darkOpacity: 'rgb(140, 87, 255, 0.32)',
+              darkerOpacity: 'rgb(140, 87, 255, 0.38)',
             },
             secondary: {
-              main: '#FF7A50',
-              light: '#FF9B7B',
-              dark: '#E66A45',
+              main: '#8A8D93',
+              light: '#A1A4A9',
+              dark: '#7C7F84',
               contrastText: '#fff',
+              lighterOpacity: 'rgb(138, 141, 147, 0.08)',
+              lightOpacity: 'rgb(138, 141, 147, 0.16)',
+              mainOpacity: 'rgb(138, 141, 147, 0.24)',
+              darkOpacity: 'rgb(138, 141, 147, 0.32)',
+              darkerOpacity: 'rgb(138, 141, 147, 0.38)',
+            },
+            error: {
+              main: '#FF4C51',
+              light: '#FF7074',
+              dark: '#E64449',
+              contrastText: '#fff',
+              lighterOpacity: 'rgb(255, 76, 81, 0.08)',
+              lightOpacity: 'rgb(255, 76, 81, 0.16)',
+              mainOpacity: 'rgb(255, 76, 81, 0.24)',
+              darkOpacity: 'rgb(255, 76, 81, 0.32)',
+              darkerOpacity: 'rgb(255, 76, 81, 0.38)',
+            },
+            warning: {
+              main: '#FFB400',
+              light: '#FFC333',
+              dark: '#E6A200',
+              contrastText: '#fff',
+              lighterOpacity: 'rgb(255, 180, 0, 0.08)',
+              lightOpacity: 'rgb(255, 180, 0, 0.16)',
+              mainOpacity: 'rgb(255, 180, 0, 0.24)',
+              darkOpacity: 'rgb(255, 180, 0, 0.32)',
+              darkerOpacity: 'rgb(255, 180, 0, 0.38)',
+            },
+            info: {
+              main: '#16B1FF',
+              light: '#45C1FF',
+              dark: '#149FE6',
+              contrastText: '#fff',
+              lighterOpacity: 'rgb(22, 177, 255, 0.08)',
+              lightOpacity: 'rgb(22, 177, 255, 0.16)',
+              mainOpacity: 'rgb(22, 177, 255, 0.24)',
+              darkOpacity: 'rgb(22, 177, 255, 0.32)',
+              darkerOpacity: 'rgb(22, 177, 255, 0.38)',
+            },
+            success: {
+              main: '#56CA00',
+              light: '#78D533',
+              dark: '#4DB600',
+              contrastText: '#fff',
+              lighterOpacity: 'rgb(86, 202, 0, 0.08)',
+              lightOpacity: 'rgb(86, 202, 0, 0.16)',
+              mainOpacity: 'rgb(86, 202, 0, 0.24)',
+              darkOpacity: 'rgb(86, 202, 0, 0.32)',
+              darkerOpacity: 'rgb(86, 202, 0, 0.38)',
             },
             background: {
-              default: '#151525',
-              paper: '#1E1E35',
+              default: '#28243D',
+              paper: '#312D4B',
             },
             text: {
-              primary: '#E7E7FF',
-              secondary: '#B0B0CC',
+              primary: 'rgb(231, 227, 252, 0.9)',
+              secondary: 'rgb(231, 227, 252, 0.7)',
+              disabled: 'rgb(231, 227, 252, 0.4)',
             },
-            divider: 'rgba(231, 231, 255, 0.12)',
+            divider: 'rgb(231, 227, 252, 0.12)',
+            customColors: {
+              bodyBg: '#28243D',
+              chatBg: '#373452',
+              greyLightBg: '#373350',
+              inputBorder: 'rgb(231, 227, 252, 0.22)',
+              tableHeaderBg: '#3D3759',
+              tooltipText: '#312D4B',
+              trackBg: '#474360'
+            }
           }),
     },
     typography: {
-      fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontFamily: inter.style.fontFamily,
       h1: {
         fontWeight: 700,
         letterSpacing: '-0.02em',
@@ -139,7 +270,14 @@ export const createLandingTheme = (mode: PaletteMode) => {
       },
     },
     shape: {
-      borderRadius: 12,
+      borderRadius: 6,
+      customBorderRadius: {
+        xs: 2,
+        sm: 4,
+        md: 6,
+        lg: 8,
+        xl: 10
+      }
     },
     shadows: [
       'none',
@@ -167,118 +305,17 @@ export const createLandingTheme = (mode: PaletteMode) => {
       '0px 44px 88px rgba(0, 0, 0, 0.58)',
       '0px 46px 92px rgba(0, 0, 0, 0.6)',
       '0px 48px 96px rgba(0, 0, 0, 0.62)',
-    ],
-    components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            textTransform: 'none',
-            borderRadius: '12px',
-            padding: '10px 24px',
-            transition: 'all 0.3s ease',
-            fontWeight: 600,
-          },
-          contained: {
-            boxShadow: mode === 'light' 
-              ? '0px 8px 16px rgba(140, 87, 255, 0.2)' 
-              : '0px 8px 16px rgba(140, 87, 255, 0.3)',
-            '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: mode === 'light' 
-                ? '0px 12px 20px rgba(140, 87, 255, 0.3)' 
-                : '0px 12px 20px rgba(140, 87, 255, 0.4)',
-            },
-          },
-          outlined: {
-            borderWidth: '2px',
-            '&:hover': {
-              borderWidth: '2px',
-              transform: 'translateY(-2px)',
-            },
-          },
-        },
-      },
-      MuiCard: {
-        styleOverrides: {
-          root: {
-            borderRadius: '16px',
-            transition: 'all 0.3s ease',
-            boxShadow: mode === 'light' 
-              ? '0px 8px 24px rgba(0, 0, 0, 0.08)' 
-              : '0px 8px 24px rgba(0, 0, 0, 0.2)',
-            '&:hover': {
-              transform: 'translateY(-5px)',
-              boxShadow: mode === 'light' 
-                ? '0px 16px 32px rgba(0, 0, 0, 0.12)' 
-                : '0px 16px 32px rgba(0, 0, 0, 0.3)',
-            },
-          },
-        },
-      },
-      MuiAppBar: {
-        styleOverrides: {
-          root: {
-            boxShadow: 'none',
-          },
-        },
-      },
-    },
+    ] as unknown as Shadows,
+    components: {},
   });
 
-  // Create the base theme
-  let theme = createTheme(getDesignTokens(mode));
-
-  // Add custom properties
-  theme = createTheme(theme, {
-    customShadows: {
-      primary: `0px 8px 24px ${alpha(theme.palette.primary.main, 0.25)}`,
-      secondary: `0px 8px 24px ${alpha(theme.palette.secondary.main, 0.25)}`,
-      info: `0px 8px 24px ${alpha(theme.palette.info.main, 0.25)}`,
-      success: `0px 8px 24px ${alpha(theme.palette.success.main, 0.25)}`,
-      warning: `0px 8px 24px ${alpha(theme.palette.warning.main, 0.25)}`,
-      error: `0px 8px 24px ${alpha(theme.palette.error.main, 0.25)}`,
-      card: mode === 'light' 
-        ? '0px 8px 24px rgba(0, 0, 0, 0.08)' 
-        : '0px 8px 24px rgba(0, 0, 0, 0.2)',
-      cardHover: mode === 'light' 
-        ? '0px 16px 32px rgba(0, 0, 0, 0.12)' 
-        : '0px 16px 32px rgba(0, 0, 0, 0.3)',
-      buttonHover: `0px 12px 20px ${alpha(theme.palette.primary.main, 0.3)}`,
-      z1: mode === 'light' 
-        ? '0px 4px 12px rgba(0, 0, 0, 0.06)' 
-        : '0px 4px 12px rgba(0, 0, 0, 0.2)',
-      z2: mode === 'light' 
-        ? '0px 8px 24px rgba(0, 0, 0, 0.08)' 
-        : '0px 8px 24px rgba(0, 0, 0, 0.25)',
-      z3: mode === 'light' 
-        ? '0px 16px 32px rgba(0, 0, 0, 0.1)' 
-        : '0px 16px 32px rgba(0, 0, 0, 0.3)',
-    },
-    customGradients: {
-      primary: 'linear-gradient(135deg, #8C57FF 0%, #A379FF 100%)',
-      secondary: 'linear-gradient(135deg, #FF7A50 0%, #FF9B7B 100%)',
-      info: 'linear-gradient(135deg, #16B1FF 0%, #45C1FF 100%)',
-      success: 'linear-gradient(135deg, #56CA00 0%, #78D533 100%)',
-      warning: 'linear-gradient(135deg, #FFB400 0%, #FFC333 100%)',
-      error: 'linear-gradient(135deg, #FF4C51 0%, #FF7074 100%)',
-      purple: 'linear-gradient(135deg, #8C57FF 0%, #C18FFF 100%)',
-      blue: 'linear-gradient(135deg, #2196F3 0%, #4DABF5 100%)',
-      orange: 'linear-gradient(135deg, #FF7A50 0%, #FFB088 100%)',
-      green: 'linear-gradient(135deg, #4CAF50 0%, #7BC67E 100%)',
-      dark: 'linear-gradient(135deg, #1E1E35 0%, #2D2D4A 100%)',
-      light: 'linear-gradient(135deg, #F4F5FA 0%, #FFFFFF 100%)',
-    },
-    customAnimations: {
-      fast: '0.2s ease',
-      medium: '0.3s ease',
-      slow: '0.5s ease',
-    },
-  } as any);
+  // Create the theme with all options
+  const theme = createTheme(getDesignTokens(mode));
 
   // Make typography responsive
-  theme = responsiveFontSizes(theme);
+  const responsiveTheme = responsiveFontSizes(theme);
 
-  return theme;
+  return responsiveTheme;
 };
 
 export default createLandingTheme;

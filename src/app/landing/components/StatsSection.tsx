@@ -7,11 +7,9 @@ import {
   Container,
   Paper,
   useTheme,
-  alpha,
-  Grid
+  alpha
 } from '@mui/material'
 import { useTranslation } from '@/utils/i18n'
-// We'll implement our own simple counter
 
 interface StatItemProps {
   value: number;
@@ -330,15 +328,15 @@ const StatsSection: React.FC = () => {
           </Typography>
         </Box>
 
-        <Grid
-          container
-          spacing={{ xs: 3, sm: 4, md: 5 }}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+            gap: { xs: 3, sm: 4, md: 5 }
+          }}
         >
           {stats.map((stat, index) => (
-            <Grid
-              key={index}
-              size={{ xs: 12, sm: 6, md: 3 }}
-            >
+            <Box key={index}>
               <StatItem
                 value={stat.value}
                 label={stat.label}
@@ -346,9 +344,9 @@ const StatsSection: React.FC = () => {
                 index={index}
                 isVisible={isVisible}
               />
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
 
         <Box
           sx={{
@@ -360,10 +358,15 @@ const StatsSection: React.FC = () => {
             transitionDelay: '0.6s'
           }}
         >
-          <Grid container spacing={{ xs: 5, md: 8 }} alignItems="center">
-            <Grid
-              size={{ xs: 12, md: 6 }}
-            >
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' },
+              gap: { xs: 5, md: 8 },
+              alignItems: 'center'
+            }}
+          >
+            <Box>
               <Box
                 sx={{
                   position: 'relative',
@@ -379,13 +382,14 @@ const StatsSection: React.FC = () => {
               >
                 <Box
                   component="img"
-                  src="/images/front-pages/landing-page/hero-elements-dark.png"
+                  src="/images/front-pages/landing-page/crm-dashboard.png"
                   alt="Our impact illustration"
                   sx={{
                     width: '100%',
                     height: 'auto',
                     display: 'block',
                     border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+                    borderRadius: '16px',
                   }}
                 />
 
@@ -417,11 +421,9 @@ const StatsSection: React.FC = () => {
                   }}
                 />
               </Box>
-            </Grid>
+            </Box>
 
-            <Grid
-              size={{ xs: 12, md: 6 }}
-            >
+            <Box>
               <Box
                 sx={{
                   p: { xs: 4, sm: 5, md: 6 },
@@ -496,8 +498,8 @@ const StatsSection: React.FC = () => {
                   {t('landing.statsSection.impactDescription2')}
                 </Typography>
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Box>
       </Container>
     </Box>

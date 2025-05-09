@@ -107,6 +107,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, avatar, r
               height: { xs: 56, sm: 64 },
               border: `3px solid ${alpha(theme.palette.background.paper, 0.8)}`,
               boxShadow: `0 8px 16px ${alpha(theme.palette.primary.main, 0.25)}`,
+              '& .MuiAvatar-img': {
+                objectFit: 'cover',
+                width: '100%',
+                height: '100%'
+              }
             }}
           />
           <Box sx={{ ml: 2.5 }}>
@@ -181,21 +186,21 @@ const TestimonialsSection: React.FC = () => {
     {
       name: t('landing.testimonials.person1.name') || "Nguyen Van A",
       role: t('landing.testimonials.person1.role') || "IELTS Student",
-      avatar: "/images/illustrations/characters/1.png",
+      avatar: "/images/front-pages/landing-page/sophie.png",
       rating: 5,
       testimonial: t('landing.testimonials.person1.quote') || "The AI-powered writing feedback helped me improve my IELTS score from 6.5 to 7.5 in just two months. The detailed analysis of my essays was incredibly helpful."
     },
     {
       name: t('landing.testimonials.person2.name') || "Tran Thi B",
       role: t('landing.testimonials.person2.role') || "University Student",
-      avatar: "/images/illustrations/characters/2.png",
+      avatar: "/images/front-pages/landing-page/paul.png",
       rating: 4.5,
       testimonial: t('landing.testimonials.person2.quote') || "The adaptive testing feature is amazing! It adjusts to my level and helps me focus on areas where I need improvement. My vocabulary has expanded significantly."
     },
     {
       name: t('landing.testimonials.person3.name') || "Le Van C",
       role: t('landing.testimonials.person3.role') || "Working Professional",
-      avatar: "/images/illustrations/characters/3.png",
+      avatar: "/images/front-pages/landing-page/chris.png",
       rating: 5,
       testimonial: t('landing.testimonials.person3.quote') || "I love the AI tutor chat. It's like having a personal English teacher available 24/7. The Vietnamese interface makes it easy to navigate and understand."
     }

@@ -311,7 +311,8 @@
     },
     "featuresSection": {
       "title": "Our Features",
-      "subtitle": "Discover the powerful tools designed to enhance your IELTS preparation"
+      "subtitle": "Discover the powerful tools designed to enhance your IELTS preparation",
+      "description": "An integrated platform with AI tools and community features to help you prepare for IELTS effectively"
     },
     "features": {
       "writingTools": {
